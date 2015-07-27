@@ -1,0 +1,4 @@
+<script type="text/javascript" src="https://js.braintreegateway.com/v2/braintree.js"></script>
+<script type="text/javascript">
+braintree.setup("<%= @client_token %>", "custom", {id: "add-card-form"})
+</script>

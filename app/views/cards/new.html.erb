@@ -1,0 +1,35 @@
+<% content_for :head do %>
+  <%= render 'javascript' %>
+<% end %>
+
+<div class="header">
+  <h1>Add A Card</h1>
+  <h2>Add a new card here.</h2>
+</div>
+
+<div class="content">
+  <p>
+    <%= form_tag({:action => 'create'}, {:class => 'pure-form pure-form-aligned', :id => 'add-card-form'}) do %>
+      <div class="pure-control-group">
+        <%= label_tag :card_name, "Card Name" %>
+        <%= text_field_tag :card_name, nil, name: 'card_name', class: "pure-input-1-2" %>
+      </div>
+      <div class="pure-control-group">
+        <%= label_tag :card_number, "Card Number" %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'number'}  %>
+      </div>
+      <div class="pure-control-group">
+        <%= label_tag :card_code, "Security Code" %>
+        <%= text_field_tag :card_code, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'cvv' } %>
+      </div>
+      <div class="pure-control-group">
+        <%= label_tag :card_month, "Expiration Date" %>
+        <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: {'braintree-name' => 'expiration_month'} } %>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
+      </div>
+      <div class="pure-controls">
+        <%= submit_tag 'Add Card', :class => 'pure-button pure-input-1-2 pure-button-primary' %>
+      </div>
+    <% end %>
+  </p>
+</div>

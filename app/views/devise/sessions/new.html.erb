@@ -1,0 +1,31 @@
+<div class="header">
+  <h1>Sign In</h1>
+  <h2>You must sign in to manage your cards</h2>
+</div>
+
+<div class="content">
+  <p>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "pure-form pure-form-stacked", :role => 'form'}) do |f| %>
+    <h3>Sign in</h3>
+    <%= devise_error_messages! %>
+    <div class="pure-control-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true %>
+    </div>
+    <div class="pure-control-group">
+      <%- if devise_mapping.recoverable? %>
+        <%= link_to "Forgot password?", new_password_path(resource_name) %>
+      <% end -%>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox" style="width:150px">
+          <label>
+            <%= f.check_box :remember_me %> Remember me
+          </label>
+        </div>
+      <% end %>
+      <%= f.submit 'Sign in', :class => 'pure-button' %>
+  <% end %>
+</div>

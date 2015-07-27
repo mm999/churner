@@ -1,0 +1,19 @@
+// Place all the styles related to the cards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.footer {
+  position: fixed;
+  left: 150px;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+}
+
+.index-footer {
+	display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 150%;
+  text-align: center;
+}

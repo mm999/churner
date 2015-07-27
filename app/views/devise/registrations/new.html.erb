@@ -1,0 +1,28 @@
+<div class="header">
+  <h1>Sign Up</h1>
+  <h2>Create an account to get started with Churner.io!</h2>
+</div>
+
+<div class="content">
+  <p>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "pure-form pure-form-stacked", :role => 'form'}) do |f| %>
+      <h3>Sign up</h3>
+      <%= devise_error_messages! %>
+      <div class="pure-control-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+      <div class="pure-control-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="pure-control-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <p>
+        <%= f.submit 'Sign up', :class => 'pure-button' %>
+      </p>
+    <% end %>
+  </p>
+</div>

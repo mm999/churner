@@ -1,0 +1,63 @@
+<div class="header">
+	<h1>My Cards</h1>
+	<h2>All of your cards appear here</h2>
+</div>
+
+<div class="content">
+	<p>
+	<% @cards.each do |card| %>
+		<div class="pure-g">
+			<div class="pure-u-1-3">
+				<img src="<%= card.image_url %>">
+			</div>
+
+			<div class="pure-u-1-3">
+				<p>
+				<%= Card.where(:card_token => card.token).first.name %>
+				</p>
+				<p>
+				<h5>Card ending in: <b><%= card.last_4 %></b></h5>
+				</p>
+			</div>
+
+			<div class="pure-u-1-3">
+			  <% if card.subscriptions.last && card.subscriptions.last.status != 'Canceled' %>
+			  	<p>
+				 	<%= form_tag({:controller => 'subscriptions', :action => 'unsubscribe'}, {:id => 'subscribe-card-form'}) do %>
+				 		<%= hidden_field_tag 'card_token', card.token %>
+				 		<%= hidden_field_tag 'customer_id', @customer.id %>
+				 		<%= hidden_field_tag 'subscription_id', card.subscriptions.last.id %>
+				 		<%= submit_tag 'Unsubscribe', :class	=> 'pure-button' %>
+					<% end %>
+					</p>
+					<p>
+					<%= form_tag({:controller => 'cards', :action => 'delete'}, {:id => 'delete-card-form'}) do %>
+						<%= hidden_field_tag 'card_token', card.token %>
+						<%= submit_tag 'Delete Card', :class => 'pure-button' %>
+					<% end %>
+					</p>
+				<% else %>
+					<p>
+				 	<%= form_tag({:controller => 'subscriptions', :action => 'subscribe'}, {:id => 'subscribe-card-form'}) do %>
+				 		<%= hidden_field_tag 'card_token', card.token %>
+				 		<%= hidden_field_tag 'customer_id', @customer.id %>
+				  	<%= submit_tag 'Subscribe', :class => 'pure-button' %>
+					<% end %>
+					</p>
+					<p>
+					<%= form_tag({:controller => 'cards', :action => 'delete'}, {:id => 'delete-card-form'}) do %>
+						<%= hidden_field_tag 'card_token', card.token %>
+						<%= submit_tag 'Delete Card', :class => 'pure-button' %>
+					<% end %>
+					</p>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	</p>
+</div>
+
+<div class="footer">
+	<a class="pure-button pure-button-primary index-footer" href="<%= new_card_path %>">Add A Card</a>
+</div>
+

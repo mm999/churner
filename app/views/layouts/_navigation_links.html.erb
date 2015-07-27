@@ -1,0 +1,15 @@
+<%# add navigation links to this file %>
+<% if user_signed_in? %>
+  <li class="pure-menu-item"><%= link_to 'My Cards', cards_path, :class => "pure-menu-link" %></li>
+  <li class="pure-menu-item"><%= link_to 'Add A Card', new_card_path, :class => "pure-menu-link" %></li>
+  <li class="pure-menu-item"><%= link_to 'Edit account', edit_user_registration_path, :class => "pure-menu-link" %></li>
+  <li class="pure-menu-item"><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', :class => "pure-menu-link" %></li>
+<% else %>
+  <li class="pure-menu-item"><%= link_to 'Sign in', new_user_session_path, :class => "pure-menu-link" %></li>
+  <li class="pure-menu-item"><%= link_to 'Sign up', new_user_registration_path, :class => "pure-menu-link" %></li>
+<% end %>
+<% if user_signed_in? %>
+  <% if current_user.try(:admin?) %>
+    <li class="pure-menu-item"><%= link_to 'Users', users_path, :class => "pure-menu-link" %></li>
+  <% end %>
+<% end %>
