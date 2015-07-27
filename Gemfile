@@ -1,4 +1,3 @@
-
 source 'https://rubygems.org'
 ruby '2.2.1'
 gem 'rails', '4.2.2'
@@ -14,7 +13,7 @@ group :development, :test do
   gem 'spring'
 end
 gem 'devise'
-gem 'gibbon'
+gem 'gibbon', '~> 1.2.0'
 gem 'braintree'
 gem 'sucker_punch'
 group :development do
