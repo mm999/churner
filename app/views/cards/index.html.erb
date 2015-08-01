@@ -4,57 +4,29 @@
 </div>
 
 <div class="content">
-	<p>
-	<% @cards.each do |card| %>
 		<div class="pure-g">
-			<div class="pure-u-1-3">
-				<img src="<%= card.image_url %>">
+		<% @cards.each do |card| %>
+			<div class="pure-u-1 pure-u-md-1-2">
+				<div class="card-wrapper">
+				  <div class="jp-card-container">
+					  <div class="jp-card jp-card-<%= card.card_type.downcase %> jp-card-identified">
+					    <a href="<%= card_path(:id => Card.where(card_token: card.token).take.id) %>">
+					      <div class="jp-card-front">
+					        <div class="jp-card-logo jp-card-<%= card.card_type.downcase %>"><%= card.card_type.downcase %></div>
+					        <div class="jp-card-lower">
+					          <div class="jp-card-shiny"></div>
+					          <div class="jp-card-number jp-card-display">XXXX XXXX XXXX <%= card.last_4 %></div>
+					          <div class="jp-card-name jp-card-display">Sean Lingren</div>
+					          <div class="jp-card-expiry jp-card-display" data-after="valid&#13;&#10;thru"><%= card.expiration_month %>/<%= card.expiration_year %></div>
+					        </div>
+					      </div>
+					    </a>
+					  </div>
+					</div>
+				</div>
 			</div>
-
-			<div class="pure-u-1-3">
-				<p>
-				<%= Card.where(:card_token => card.token).first.name %>
-				</p>
-				<p>
-				<h5>Card ending in: <b><%= card.last_4 %></b></h5>
-				</p>
-			</div>
-
-			<div class="pure-u-1-3">
-			  <% if card.subscriptions.last && card.subscriptions.last.status != 'Canceled' %>
-			  	<p>
-				 	<%= form_tag({:controller => 'subscriptions', :action => 'unsubscribe'}, {:id => 'subscribe-card-form'}) do %>
-				 		<%= hidden_field_tag 'card_token', card.token %>
-				 		<%= hidden_field_tag 'customer_id', @customer.id %>
-				 		<%= hidden_field_tag 'subscription_id', card.subscriptions.last.id %>
-				 		<%= submit_tag 'Unsubscribe', :class	=> 'pure-button' %>
-					<% end %>
-					</p>
-					<p>
-					<%= form_tag({:controller => 'cards', :action => 'delete'}, {:id => 'delete-card-form'}) do %>
-						<%= hidden_field_tag 'card_token', card.token %>
-						<%= submit_tag 'Delete Card', :class => 'pure-button' %>
-					<% end %>
-					</p>
-				<% else %>
-					<p>
-				 	<%= form_tag({:controller => 'subscriptions', :action => 'subscribe'}, {:id => 'subscribe-card-form'}) do %>
-				 		<%= hidden_field_tag 'card_token', card.token %>
-				 		<%= hidden_field_tag 'customer_id', @customer.id %>
-				  	<%= submit_tag 'Subscribe', :class => 'pure-button' %>
-					<% end %>
-					</p>
-					<p>
-					<%= form_tag({:controller => 'cards', :action => 'delete'}, {:id => 'delete-card-form'}) do %>
-						<%= hidden_field_tag 'card_token', card.token %>
-						<%= submit_tag 'Delete Card', :class => 'pure-button' %>
-					<% end %>
-					</p>
-				<% end %>
-			</div>
-		</div>
-	<% end %>
-	</p>
+		<% end %>
+	</div>
 </div>
 
 <div class="footer">

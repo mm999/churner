@@ -50,6 +50,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bourbon (4.2.3)
+      sass (~> 3.4)
+      thor
     braintree (2.46.0)
       builder (>= 2.0.0)
     builder (3.2.2)
@@ -184,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  bourbon
   braintree
   byebug
   coffee-rails (~> 4.1.0)
