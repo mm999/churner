@@ -1,15 +1,10 @@
 @import "mixins";
 
-// browser specific hacks
-@import "browsers/safari";
-@import "browsers/ie";
-
-@import "cards/amex";
+@import "cards/americanexpress";
 @import "cards/discover";
 @import "cards/visa";
 @import "cards/mastercard";
 @import "cards/maestro";
-@import "cards/dankort";
 
 .jp-card-container {
     @include perspective(1000px);
@@ -198,55 +193,6 @@
         }
     }
 
-    .jp-card-back {
-        @include transform(rotateY(180deg));
-        $bar-top-offset: 40%;
-        $signature-height: 16%;
-        $signature-left: 2%;
-
-        .jp-card-bar {
-            @include linear-gradient(#444, #333);
-            width: 100%;
-            height: 20%;
-            position: absolute;
-            top: 10%;
-        }
-
-        &:after {
-            @include shape();
-            @include linear-gradient(#FFF, #FFF);
-            width: 80%;
-            height: $signature-height;
-            position: absolute;
-            top: $bar-top-offset;
-            left: $signature-left;
-        }
-
-        .jp-card-cvc {
-            position: absolute;
-            top: $bar-top-offset;
-            left: 85%;
-            @include transition-delay($card-transition-time + 200ms);
-        }
-
-        .jp-card-shiny {
-            position: absolute;
-            top: $bar-top-offset + $signature-height + 10%;
-            left: $signature-left;
-
-            &:after {
-                content: "This card has been issued by Jesse Pollak and is licensed for anyone to use anywhere for free.\AIt comes with no warranty.\A For support issues, please visit: github.com/jessepollak/card.";
-                position: absolute;
-                left: 120%;
-                top: 5%;
-                color: white;
-                font-size: 7px;
-                width: 230px;
-                opacity: .5;
-            }
-        }
-    }
-
     &.jp-card-identified {
         box-shadow: 0 0 20px rgba(0,0,0,0.3);
 
@@ -256,21 +202,7 @@
 
             &:before {
                 @include transition(all $card-transition-time ease);
-                @include card-texture();
                 opacity: 1;
-                // box-shadow: inset 0 0 5px rgba(255,255,255,1);
-            }
-
-            .jp-card-logo {
-                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-            }
-        }
-
-        &.no-radial-gradient {
-            .jp-card-front, .jp-card-back {
-                &:before {
-                    @include card-texture($radial-gradient: false);
-                }
             }
         }
     }

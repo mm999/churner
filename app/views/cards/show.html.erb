@@ -8,13 +8,19 @@
 		<div class="pure-u-1">
 			<div class="card-wrapper">
 			  <div class="jp-card-container">
-				  <div class="jp-card jp-card-<%= @bt_card.card_type.downcase %> jp-card-identified">
+				  <div class="jp-card jp-card-<%= @bt_card.card_type.downcase.delete(' ') %> jp-card-identified">
 			      <div class="jp-card-front">
-			        <div class="jp-card-logo jp-card-<%= @bt_card.card_type.downcase %>"><%= @bt_card.card_type.downcase %></div>
+			        <div class="jp-card-logo jp-card-<%= @bt_card.card_type.downcase.delete(' ') %>">
+			        	<% if @bt_card.card_type.downcase.delete(' ') == 'americanexpress' %>
+			        		<%= "" %>
+			        	<% else %>
+			        		<%= @bt_card.card_type.downcase.delete(' ') %>
+			        	<% end %>
+			        </div>
 			        <div class="jp-card-lower">
 			          <div class="jp-card-shiny"></div>
 			          <div class="jp-card-number jp-card-display">XXXX XXXX XXXX <%= @bt_card.last_4 %></div>
-			          <div class="jp-card-name jp-card-display">Sean Lingren</div>
+			          <div class="jp-card-name jp-card-display"><%= @bt_card.cardholder_name %></div>
 			          <div class="jp-card-expiry jp-card-display" data-after="valid&#13;&#10;thru"><%= @bt_card.expiration_month %>/<%= @bt_card.expiration_year %></div>
 			        </div>
 			      </div>

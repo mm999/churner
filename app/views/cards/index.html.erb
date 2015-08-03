@@ -7,16 +7,25 @@
 		<div class="pure-g">
 		<% @cards.each do |card| %>
 			<div class="pure-u-1 pure-u-md-1-2">
+				<div class="card-bank-label">
+					<%= Card.where(card_token: card.token).take.bank_name %> <%= Card.where(card_token: card.token).take.name %>
+				</div>
 				<div class="card-wrapper">
 				  <div class="jp-card-container">
-					  <div class="jp-card jp-card-<%= card.card_type.downcase %> jp-card-identified">
+					  <div class="jp-card jp-card-<%= card.card_type.downcase.delete(' ') %> jp-card-identified">
 					    <a href="<%= card_path(:id => Card.where(card_token: card.token).take.id) %>">
 					      <div class="jp-card-front">
-					        <div class="jp-card-logo jp-card-<%= card.card_type.downcase %>"><%= card.card_type.downcase %></div>
+					        <div class="jp-card-logo jp-card-<%= card.card_type.downcase.delete(' ') %>">
+					        	<% if card.card_type.downcase.delete(' ') == 'americanexpress' %>
+					        		<%= "" %>
+					        	<% else %>
+					        		<%= card.card_type.downcase.delete(' ') %>
+					        	<% end %>
+					        </div>
 					        <div class="jp-card-lower">
 					          <div class="jp-card-shiny"></div>
 					          <div class="jp-card-number jp-card-display">XXXX XXXX XXXX <%= card.last_4 %></div>
-					          <div class="jp-card-name jp-card-display">Sean Lingren</div>
+					          <div class="jp-card-name jp-card-display"><%= card.cardholder_name %></div>
 					          <div class="jp-card-expiry jp-card-display" data-after="valid&#13;&#10;thru"><%= card.expiration_month %>/<%= card.expiration_year %></div>
 					        </div>
 					      </div>
@@ -30,6 +39,6 @@
 </div>
 
 <div class="footer">
-	<a class="pure-button pure-button-primary index-footer" href="<%= new_card_path %>">Add A Card</a>
+	<a class="pure-button index-footer button-add-card" href="<%= new_card_path %>">Add A Card</a>
 </div>
 

@@ -15,6 +15,7 @@
     padding-top: $offset;
     letter-spacing: .03em;
     border: 1px solid #EEE;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
 
     &:before, &:after {
         content: " ";

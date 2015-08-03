@@ -33,6 +33,10 @@
       </div>
       <br>
       <div class="pure-control-group">
+        <%= label_tag :cardholder_name, "Cardholder Name" %>
+        <%= text_field_tag :cardholder_name, nil, name: nil, class: "pure-input-1-2", :required => true, data: { 'braintree-name' => 'cardholder_name'}  %>
+      </div>
+      <div class="pure-control-group">
         <%= label_tag :card_number, "Card Number" %>
         <%= text_field_tag :card_number, nil, name: nil, class: "pure-input-1-2", :required => true, data: { 'braintree-name' => 'number'}  %>
       </div>
@@ -46,7 +50,7 @@
         <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
       </div>
       <div class="pure-controls">
-        <%= submit_tag 'Add Card', :class => 'pure-button pure-input-2-3 pure-button-primary' %>
+        <%= submit_tag 'Add Card and Subscribe', :class => 'pure-button pure-input-2-3 pure-button-primary' %>
       </div>
     <% end %>
   </p>

@@ -1,9 +1,9 @@
 @import "card";
 @import "../logos/amex";
 
-$fill-color: #108168;
+$fill-color: #B6A359;
 
-.jp-card.jp-card-amex {
+.jp-card.jp-card-americanexpress {
 
     &.jp-card-flipped{
         @include transform(none);
@@ -18,7 +18,7 @@ $fill-color: #108168;
 
         .jp-card-front {
 
-            .jp-card-logo.jp-card-amex {
+            .jp-card-logo.jp-card-americanexpress {
                 opacity: 1;
             }
 

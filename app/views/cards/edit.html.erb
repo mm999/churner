@@ -4,7 +4,7 @@
 
 <div class="header">
 	<h1>Edit <%= @card.bank_name %> <%= @card.name %></h1>
-	<h2>Change all of your cards details here</h2>
+	<h2>Change all of your card details here</h2>
 </div>
 
 <div class="content">
@@ -13,11 +13,11 @@
     <%= form_tag({:controller => 'cards', :action => 'update'}, {:method => "patch", :class => 'pure-form pure-form-aligned', :id => 'edit-card-form'}) do %>
       <div class="pure-control-group">
         <%= label_tag :bank_name, "Bank Name" %>
-        <%= text_field_tag :bank_name, nil, name: 'bank_name', class: "pure-input-1-2", :required => true, placeholder: @card.bank_name %>
+        <%= text_field_tag :bank_name, nil, name: 'bank_name', class: "pure-input-1-2", placeholder: @card.bank_name %>
       </div>
       <div class="pure-control-group">
         <%= label_tag :card_name, "Card Name" %>
-        <%= text_field_tag :card_name, nil, name: 'card_name', class: "pure-input-1-2", :required => true, placeholder: @card.name %>
+        <%= text_field_tag :card_name, nil, name: 'card_name', class: "pure-input-1-2", placeholder: @card.name %>
       </div>
       <br>
       <div class="pure-control-group">
@@ -35,11 +35,11 @@
       <br>
       <div class="pure-control-group">
         <%= label_tag :card_number, "Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil, class: "pure-input-1-2", :required => true, data: { 'braintree-name' => 'number'}  %>
+        <%= text_field_tag :card_number, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'number'}  %>
       </div>
       <div class="pure-control-group">
         <%= label_tag :card_code, "Security Code" %>
-        <%= text_field_tag :card_code, nil, name: nil, class: "pure-input-1-2", :required => true, data: { 'braintree-name' => 'cvv' } %>
+        <%= text_field_tag :card_code, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'cvv' } %>
       </div>
       <div class="pure-control-group">
         <%= label_tag :card_month, "Expiration Date" %>
@@ -47,7 +47,11 @@
         <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
       </div>
       <div class="pure-controls">
+        <%= hidden_field_tag 'card_token', @bt_card.token %>
         <%= submit_tag 'Update Card', :class => 'pure-button pure-input-2-3 pure-button-primary' %>
       </div>
     <% end %>
   </p>
+  
+</div>
+
