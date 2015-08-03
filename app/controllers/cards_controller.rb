@@ -33,10 +33,10 @@ class CardsController < ApplicationController
 	  	@new_card = Card.new(
 	  		:name => params[:card_name],
 	  		:card_token => card.payment_method.token,
-	  		:bank_name => params[:bank_name],
 	  		:issue_date => params[:issue_date],
 	  		:annual_fee => params[:annual_fee],
 	  		:credit_limit => params[:credit_limit],
+	  		:bank_name => params[:bank_name],
 	  		:customer_id => customer.id )
 	  	if @new_card.save
 				redirect_to cards_path
