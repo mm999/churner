@@ -39,7 +39,18 @@ class CardsController < ApplicationController
 	  		:bank_name => params[:bank_name],
 	  		:customer_id => customer.id )
 	  	if @new_card.save
+				sub = Braintree::Subscription.create(
+					:payment_method_token => card.payment_method.token,
+					:plan_id => 'churner-standard'
+				)
+				if sub.success?
+					redirect_to cards_path
+				else
+					sub.errors.each do |error|
+		  			flash[:error] = error.message
+					end
 				redirect_to cards_path
+				end
 			else
 				redirect_to new_card_path
 			end

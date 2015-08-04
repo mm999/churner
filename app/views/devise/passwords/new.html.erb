@@ -1,17 +1,10 @@
-<div class="header">
-  <h1>Forgot your password?</h1>
-  <h2>Enter your email and we will send password reset instructions</h2>
-</div>
-
-<div class="content">
-  <p>
-    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => "pure-form pure-form-stacked", :method => :post, :role => 'form'}) do |f| %>
+<body class='body-registration-override'>
+  <div class='content'>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'forgotpassword-card login-card pure-form', :method => :post, :role => 'form'}) do |f| %>
       <%= devise_error_messages! %>
-      <div class="pure-control-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
-      </div>
-       <%= f.submit 'Reset Password', :class => 'pure-button' %>
+      <h1>Password Reset</h1><br>
+      <%= f.email_field :email, :autofocus => true, :placeholder => 'Email', :class => "pure-input-1-1 login-card-input", :required => true %>
+      <%= f.submit 'Reset Password', :class => 'login login-submit pure-button', :required => true %>
     <% end %>
-  </p>
-</div>
+  </div>
+</body>

@@ -1,49 +1,30 @@
-<div class="header">
-  <h1>Edit Account</h1>
-  <h2>Change your email and password here</h2>
-</div>
-
-<div class="content">
-  <p>
-    <h3>Edit <%= resource_name.to_s.humanize %></h3>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'pure-form pure-form-stacked', :method => :put, :role => 'form'}) do |f| %>
+<body class='body-registration-override'>
+<div class='content'>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'accountedit-card login-card pure-form', :method => :put, :role => 'form'}) do |f| %>
+      <h1>Edit Account</h1>
       <%= devise_error_messages! %>
-      <div class="pure-control-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-      </div>
-      <fieldset>
-        <p>Leave these fields blank if you don't want to change your password.</p>
-        <div class="pure-control-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
-        </div>
-        <div class="pure-control-group">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
-        </div>
+      <%= f.label 'Update Email' %>
+      <%= f.email_field :email, :placeholder => 'Email', :class => "login-card-input" %>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <%= f.label 'Change Password' %>
+      <fieldset class='pure-group'>
+      <%= f.password_field :password, :autocomplete => 'off', :placeholder => 'New Password', :class => "login-card-input" %>
+      <%= f.password_field :password_confirmation, :placeholder => 'New Password Confirmation', :class => "login-card-input" %>
       </fieldset>
-      <fieldset>
-        <p>You must enter your current password to make changes.</p>
-        <div class="pure-control-group">
-          <%= f.label :current_password %>
-          <%= f.password_field :current_password, class: 'form-control' %>
-        </div>
-      </fieldset>
-      <%= f.submit 'Update', :class => 'pure-button' %>
+      <%= f.label 'Current Password' %>
+      <%= f.password_field :current_password, :placeholder => 'Current Password', :class => "login-card-input" %>
+      <%= f.submit 'Update', :class => 'login login-submit pure-button' %>
     <% end %>
-  </p>
 
-  <p>
-    <h3>Cancel Account</h3>
+    <div class=' cancel-card login-card'>
+    <h1>Cancel Account</h1>
     <% if Braintree::Customer.find(current_user.customer_id).credit_cards.length == 0 %>
-      <p>Unhappy? We'll be sad to see you go. Make sure you unsubscribe all of your cards first.</p>
-      <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'pure-button' %>
+      <%= button_to 'Cancel My Account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete, :class => 'pure-button button-delete', :class => "login-card-input" %>
     <% else %>
-      <p> You cannot cancel your account until you delete all of your cards, please do that first. Thanks! </p>
+      Please delete all your cards before you cancel your account. Thanks!
     <% end %>
-  </p>
+    </div>
 </div>
+</body>
