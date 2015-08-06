@@ -10,10 +10,11 @@
         </p>
         <p>
             <% if user_signed_in? %>
-                <a href="<%= cards_path %>" class="pure-button pure-button-primary">My Cards</a>
+                <a href="<%= cards_path %>" class="waves-effect waves-light btn-large">My Cards</a>
             <% else %>
-                <a href="<%= new_user_session_path %>" class="pure-button pure-button-primary">Sign In</a>
-                <a href="<%= new_user_registration_path %>" class="pure-button pure-button-primary">Sign Up</a>
+                <a href="<%= new_user_session_path %>" class="waves-effect waves-light btn-large">Sign In</a>
+                &nbsp&nbsp&nbsp&nbsp
+                <a href="<%= new_user_registration_path %>" class="waves-effect waves-light btn-large">Sign Up</a>
             <% end %>
         </p>
     </div>
@@ -70,7 +71,7 @@
         </div>
         <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
 
-            <h2 class="content-head content-head-ribbon">Churner.io is 100% secure</h2>
+            <h5 class="content-head content-head-ribbon">Churner.io is 100% secure</h5>
 
             <p>
                 All card storage and payments processing is handled by <a href="https://www.braintreepayments.com/">Braintree Payments</a>,
@@ -83,33 +84,25 @@
     </div>
 
     <div class="content content-footer">
-        <h2 class="content-head is-center">Join our email list and be the first to hear about new features!</h2>
+        <h5 class="content-head is-center">Join our email list and be the first to hear about new features!</h5>
 
         <div class="pure-g">
             <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
-                <form class="pure-form pure-form-stacked">
-                    <fieldset>
-
-                        <label for="name">Your Name</label>
-                        <input id="name" type="text" placeholder="Your Name">
-
-
-                        <label for="email">Your Email</label>
-                        <input id="email" type="email" placeholder="Your Email">
-
-                        <button type="submit" class="pure-button">Sign Up</button>
-                    </fieldset>
+                <form class="input-field">
+                    <input id="name" type="text" placeholder="Your Name">
+                    <input id="email" type="email" placeholder="Your Email">
+                    <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
                 </form>
             </div>
 
             <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h4>Contact Us</h4>
+                <h6>Contact Us</h6>
                 <p>
                     If you have any questions or comments please send an email to contact@churner.io
                     and we will do our best to respond promptly.
                 </p>
 
-                <h4>More Information</h4>
+                <h6>More Information</h6>
                 <p>
                     This site is brand new and lacks many features. We have many ideas for the future,
                     but these new updates can only be supported through current participation and interest.

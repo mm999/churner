@@ -1,51 +1,46 @@
-<div class="header">
-  <h1>My <%= @card.bank_name %> <%= @card.name %></h1>
-</div>
-
-<div class="content">
-
-	<div class="pure-g">
-		<div class="pure-u-1">
-			<div class="card-wrapper">
-			  <div class="jp-card-container">
-				  <div class="jp-card jp-card-<%= @bt_card.card_type.downcase.delete(' ') %> jp-card-identified">
-			      <div class="jp-card-front">
-			        <div class="jp-card-logo jp-card-<%= @bt_card.card_type.downcase.delete(' ') %>">
-			        	<% if @bt_card.card_type.downcase.delete(' ') == 'americanexpress' %>
-			        		<%= "" %>
-			        	<% else %>
-			        		<%= @bt_card.card_type.downcase.delete(' ') %>
-			        	<% end %>
-			        </div>
-			        <div class="jp-card-lower">
-			          <div class="jp-card-shiny"></div>
-			          <div class="jp-card-number jp-card-display">XXXX XXXX XXXX <%= @bt_card.last_4 %></div>
-			          <div class="jp-card-name jp-card-display"><%= @bt_card.cardholder_name %></div>
-			          <div class="jp-card-expiry jp-card-display" data-after="valid&#13;&#10;thru"><%= @bt_card.expiration_month %>/<%= @bt_card.expiration_year %></div>
-			        </div>
-			      </div>
-				  </div>
-				</div>
+<div class='container'>
+  <div class='card card-ccholder hoverable'>
+    <div class='card-image'>
+		  <div class='jp-card-container'>
+			  <div class='jp-card jp-card-<%= @bt_card.card_type.downcase.delete(' ') %> jp-card-identified'>
+		      <div class='jp-card-front'>
+		      	<div class="jp-card-label jp-card-display">
+		      		<%= @card.bank_name %> <%= @card.name %>
+		      	</div>
+		        <div class='jp-card-logo jp-card-<%= @bt_card.card_type.downcase.delete(' ') %>'>
+		        	<%= @bt_card.card_type.downcase.delete(' ') == 'americanexpress' ? '' : @bt_card.card_type.downcase.delete(' ') %>
+		        </div>
+		        <div class='jp-card-lower'>
+		          <div class='jp-card-shiny'></div>
+		          <div class='jp-card-number jp-card-display'>XXXX XXXX XXXX <%= @bt_card.last_4 %></div>
+		          <div class='jp-card-name jp-card-display'><%= @bt_card.cardholder_name %></div>
+		          <div class='jp-card-expiry jp-card-display' data-after='valid&#13;&#10;thru'><%= @bt_card.expiration_month %>/<%= @bt_card.expiration_year %></div>
+		        </div>
+		      </div>
+			  </div>
 			</div>
-		</div>
-	</div>
-
-	<div style="text-align: center">
-		Card Issue Date: <%= @card.issue_date %>
-		</br>
-		Annual Fee: $<%= @card.annual_fee.to_s %>
-		</br>
-		Credit Limit: $<%= @card.credit_limit %>
-
-		<%= form_tag({:controller => 'cards', :action => 'edit'}, {:id => 'edit-card-form', :method => 'get'}) do %>
-			<%= hidden_field_tag 'card_id', @card_id %>
-			<%= submit_tag 'Edit Card', :class => 'pure-button' %>
-		<% end %>
-
-		<%= form_tag({:controller => 'cards', :action => 'delete'}, {:id => 'delete-card-form'}) do %>
-			<%= hidden_field_tag 'card_token', @bt_card.token %>
-			<%= hidden_field_tag 'card_id', @card.id %>
-			<%= submit_tag 'Delete Card', :class => 'pure-button' %>
-		<% end %>
-	</div>
+    </div>
+    <div class='card-content'>
+    	<table>
+    		<tbody>
+    			<tr>
+    				<th>Card Issue Date:</th>
+    				<td><%= @card.issue_date.strftime("%b %e, %Y") %></td>
+    			</tr>
+    			<tr>
+    				<th>Annual Fee:</th>
+    				<td>$<%= @card.annual_fee.to_s %></td>
+    			</tr>
+    			<tr>
+    				<th>Credit Limit:</th>
+    				<td>$<%= @card.credit_limit %></td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </div>
+    <div class='card-action'>
+			<%= link_to 'Edit Card', edit_card_path(:id => @card.id) %>
+			<%= link_to 'Delete Card', card_path(:id => @card.id), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'delete-card-link' %>
+    </div>
+  </div>
 </div>

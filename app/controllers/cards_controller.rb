@@ -92,10 +92,17 @@ class CardsController < ApplicationController
 	# 	end
 	# end
 
-	def delete
-		Braintree::PaymentMethod.delete(params[:card_token])
-		Card.destroy(params[:card_id])
-		redirect_to cards_path
+	def destroy
+		if Braintree::PaymentMethod.delete(Card.find(params[:id]).card_token)
+			deleted_card = Card.destroy(params[:id])
+			if deleted_card.destroyed?
+				redirect_to cards_path
+			else
+				flash[:error] = "Card Not Deleted"
+			end
+		else
+			flash[:error] = "Card Not Deleted"
+		end
 	end
 
 	private

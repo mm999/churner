@@ -1,6 +1,6 @@
-$card-width: 350px;
-$card-height: 200px;
-$card-border-radius: 10px;
+$card-width: 400px;
+$card-height: $card-width * (200/350);
+$card-border-radius: 0px;
 $card-fill-color: #3399CC;
 $card-font-family: "Helvetica Neue";
 $card-monospace-font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;

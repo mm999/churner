@@ -1,30 +1,36 @@
-<body class='body-registration-override'>
 <div class='content'>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'accountedit-card login-card pure-form', :method => :put, :role => 'form'}) do |f| %>
-      <h1>Edit Account</h1>
+  <div class="auth-container card-panel" style="margin-top: 5%;">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'input-field', :method => :put, :role => 'form'}) do |f| %>
+      <h4>Edit Account</h4>
       <%= devise_error_messages! %>
-      <%= f.label 'Update Email' %>
-      <%= f.email_field :email, :placeholder => 'Email', :class => "login-card-input" %>
+      <h6 style="padding-top: 10px;">Update Your Email</h6>
+      <%= f.email_field :email, :placeholder => 'Email' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-      <%= f.label 'Change Password' %>
-      <fieldset class='pure-group'>
-      <%= f.password_field :password, :autocomplete => 'off', :placeholder => 'New Password', :class => "login-card-input" %>
-      <%= f.password_field :password_confirmation, :placeholder => 'New Password Confirmation', :class => "login-card-input" %>
-      </fieldset>
-      <%= f.label 'Current Password' %>
-      <%= f.password_field :current_password, :placeholder => 'Current Password', :class => "login-card-input" %>
-      <%= f.submit 'Update', :class => 'login login-submit pure-button' %>
+      <br>
+      <br>
+      <h6>Change Your Password</h6>
+      <%= f.password_field :password, :autocomplete => 'off', :placeholder => 'New Password' %>
+      <%= f.password_field :password_confirmation, :placeholder => 'New Password Confirmation' %>
+      <br>
+      <br>
+      <h6>Enter Your Password To Make Changes</h6>
+      <%= f.password_field :current_password, :placeholder => 'Current Password' %>
+      <button class="btn waves-effect waves-light" type="submit" name="commit">Submit</button>
     <% end %>
+  </div>
 
-    <div class=' cancel-card login-card'>
-    <h1>Cancel Account</h1>
+  <div class="auth-container card-panel" style="margin-top: 0%;">
+    <h4>Cancel Account</h4>
     <% if Braintree::Customer.find(current_user.customer_id).credit_cards.length == 0 %>
-      <%= button_to 'Cancel My Account', registration_path(resource_name), :data => { :confirm => 'Are you sure?' }, :method => :delete, :class => 'pure-button button-delete', :class => "login-card-input" %>
+      <form method="post" action="/users">
+        <input type="hidden" name="_method" value="delete">
+        <button data-confirm="Are you sure?" type="submit" class="btn waves-effect waves-light delete-button red">Cancel My Account</button>
+        <input type="hidden" name="authenticity_token" value="EmS1mRAWNpbZt4I2wEsX6/n55IFPxikV+3HD23y49TVzqy2zGLf07uNa6Xy9+0CXGyuks9FIoVaJ852YBOpc0A==">
+      </form>
     <% else %>
       Please delete all your cards before you cancel your account. Thanks!
     <% end %>
-    </div>
+  </div>
 </div>
-</body>

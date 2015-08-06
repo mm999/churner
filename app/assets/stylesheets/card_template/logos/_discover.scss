@@ -8,7 +8,7 @@
     text-transform: uppercase;
     font-style: normal;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
     overflow: hidden;
     z-index: 1;
@@ -30,21 +30,21 @@
         height: $size;
         border-radius: $size;
         bottom: -5%;
-        right: -80%;
+        right: -50%;
         z-index: -1;
     }
 
     &:after {
-        $size: 8px;
+        $size: 10px;
         width: $size;
         height: $size;
         border-radius: $size /2;
-        top: $offset + 1;
-        left: 27px;
+        top: $offset;
+        left: 35px;
         @include radial-gradient($orange, #fff);
         content: "network";
-        font-size: 4px;
-        line-height: 24px;
+        font-size: 6px;
+        line-height: 27px;
         text-indent: -7px;
     }
 }

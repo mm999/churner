@@ -2,23 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.footer {
-  position: fixed;
-  left: 150px;
-  right: 0;
-  bottom: 0;
-  height: 50px;
-  z-index: 999;
-}
-
-.index-footer {
-	display: block;
-  width: 100%;
-  height: 100%;
-  font-size: 150%;
-  text-align: center;
-}
-
 .card-bank-label {
   text-align: center;
   font-weight: 900;
@@ -29,10 +12,68 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 48em) {
+.card-ccholder {
+  width: $card-width;
+  max-width: 95%;
+  min-width: 400px;
+  margin-top: 10%;
+  align: center;
+  margin: 8% auto;
+}
 
-  .footer {
-    left: 0px;
+.delete-card-link {
+  color: #E03616 !important;
+  float: right !important;
+  margin-right: 10px !important;
+}
+
+.card-content tr {
+  line-height: 10px;
+}
+
+body {
+  background: #ececec;
+}
+
+.nav-wrapper {
+  background: #449DDC;
+}
+
+.root-nav-button {
+  font-size: 1.5em;
+  margin-left: 2%;
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 18% auto 5% auto;
+
+  h4, h6 {
+    color: #449DDC;
   }
 
+}
+
+.p-override {
+  margin: 0px 0px 10px;
+}
+
+.check-override {
+  font-size: .9em !important;
+  top: 0px !important;
+  left: 0px !important;
+  margin-top: 3px !important;
+}
+
+.delete-button {
+  background: #E03616;
+}
+
+.add-card-form {
+  margin: 2% auto 10% auto;
+  max-width: 500px;
+
+  h4 {
+    margin-bottom: 30px;
+  }
 }

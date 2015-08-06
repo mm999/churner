@@ -1,12 +1,12 @@
-<body class='body-registration-override'>
-  <div class='content'>
-    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'login-card pure-form', :method => :put }) do |f| %>
+<div class='container'>
+	<div class='auth-container card-panel'>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'input-field', :method => :put }) do |f| %>
       <%= devise_error_messages! %>
-      <h1>Password Reset</h1><br>
+      <h4>Password Reset</h4>
       <%= f.hidden_field :reset_password_token %>
-      <%= f.password_field :password, autofocus: true, autocomplete: 'off', :placeholder => 'New Password', :class => "pure-input-1-1 login-card-input", :required => true %>
-      <%= f.password_field :password_confirmation, autocomplete: 'off', :placeholder => 'Confirm New Password', :class => "pure-input-1-1 login-card-input", :required => true %>
-      <%= f.submit 'Change My Password', :class => 'login login-submit pure-button' %>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'off', :placeholder => 'New Password', :required => true %>
+      <%= f.password_field :password_confirmation, autocomplete: 'off', :placeholder => 'Confirm New Password', :required => true %>
+      <button class="btn waves-effect waves-light" type="submit" name="commit">Change My Password</button>
     <% end %>
   </div>
 </body>

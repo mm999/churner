@@ -1,0 +1,15 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="<%= root_path %>" class="root-nav-button">Churner.io</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      	<%= render 'layouts/navigation_links' %>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+      	<li><%= link_to 'Churner.io', root_path %></li>
+      	<%= render 'layouts/navigation_links' %>
+      </ul>
+    </div>
+  </nav>
+</div>

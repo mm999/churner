@@ -1,13 +1,9 @@
 @import "logo";
 
-$logo-height: 45px;
-$logo-width: 60px;
-
 .jp-card-logo.jp-card-americanexpress {
-    $box-offset: 0px;
-    $box-width: $logo-height - $box-offset;
+    $box-width: $logo-height*1.2;
     $box-height: $box-width;
-    $font-size: 7px;
+    $font-size: 9px;
     $font-padding: 2px;
 
     text-transform: uppercase;
@@ -15,6 +11,9 @@ $logo-width: 60px;
     font-size: $font-size;
     font-weight: bold;
     color: white;
+
+    border: none;
+    box-shadow: none;
 
     &:before, &:after {
         width: $box-width;
@@ -27,16 +26,16 @@ $logo-width: 60px;
         $blue: #267AC3;
         height: $box-height;
         content: "american";
-        top: $box-offset / 2 - 1;
+        top: 3px;
         text-align: left;
         padding-left: $font-padding;
-        padding-top: $box-height / 2 - $font-size + 1;
+        padding-top: $box-height / 3;
         background: $blue;
     }
 
     &:after {
         content: "express";
-        bottom: $box-height / 2 - $font-size - 10;
+        bottom: $box-height / 4 - 10;
         text-align: right;
         padding-right: $font-padding;
     }

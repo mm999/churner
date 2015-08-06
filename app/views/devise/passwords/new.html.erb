@@ -1,10 +1,9 @@
-<body class='body-registration-override'>
-  <div class='content'>
-    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'forgotpassword-card login-card pure-form', :method => :post, :role => 'form'}) do |f| %>
-      <%= devise_error_messages! %>
-      <h1>Password Reset</h1><br>
-      <%= f.email_field :email, :autofocus => true, :placeholder => 'Email', :class => "pure-input-1-1 login-card-input", :required => true %>
-      <%= f.submit 'Reset Password', :class => 'login login-submit pure-button', :required => true %>
-    <% end %>
-  </div>
-</body>
+<div class='container'>
+	<div class='auth-container card-panel'>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'input-field', :method => :post, :role => 'form'}) do |f| %>
+    <%= devise_error_messages! %>
+    <h4>Password Reset</h4>
+    <%= f.email_field :email, :autofocus => true, :placeholder => 'Email', :required => true %>
+    <button class="btn waves-effect waves-light" type="submit" name="commit">Reset Password</button>
+  <% end %>
+</div>

@@ -2,30 +2,32 @@
   <%= render 'javascript' %>
 <% end %>
 
-<body class='body-registration-override'>
-  <div class='content'>
-    <%= form_tag({:action => 'create'}, {:class => 'newcard-card login-card pure-form', :id => 'add-card-form'}) do %>
-      <h1>Add A Card</h1>
-      <%= label_tag "Card Labels" %>
-      <fieldset class='pure-group'>
-      <%= text_field_tag :bank_name, nil, name: 'bank_name', :required => true, :placeholder => 'Bank Name', :class => 'login-card-input' %>
-      <%= text_field_tag :card_name, nil, name: 'card_name', :required => true, :placeholder => 'Card Name', :class => 'login-card-input' %>
-      </fieldset>
-      <%= label_tag "Issue Date, Annual Fee, Credit Limit" %>
-      <fieldset class='pure-group'>
-      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => 'Issue Date', :class => 'login-card-input' %>
-      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', :placeholder => 'Annual Fee', :class => 'login-card-input' %>
-      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', :placeholder => 'Credit Limit', :class => 'login-card-input' %>
-      </fieldset>
-      <%= label_tag "Card Details" %>
-      <fieldset class='pure-group'>
-      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Cardholder Name', :class => 'login-card-input' %>
-      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => 'Card Number', :class => 'login-card-input' %>
-      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => 'Security Code', :class => 'login-card-input' %>
-      </fieldset>
-      <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: {'braintree-name' => 'expiration_month'} } %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
-      <%= submit_tag 'Add Card and Subscribe', :class => 'login login-submit pure-button' %>
+<div class='container'>
+  <div class='auth-container card-panel add-card-form'>
+    <%= form_tag({:action => 'create'}, {:class => 'input-field', :id => 'add-card-form'}) do %>
+      <h4>Add A Card</h4>
+      <h6>Card Labels</h6>
+      <%= text_field_tag :bank_name, nil, name: 'bank_name', :required => true, :placeholder => 'Bank Name'%>
+      <%= text_field_tag :card_name, nil, name: 'card_name', :required => true, :placeholder => 'Card Name'%>
+      <h6>Issue Date, Annual Fee, Credit Limit</h6>
+      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => 'Card Issue Date', :class => "datepicker", :id => "datepicker" %>
+      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', :placeholder => 'Annual Fee'%>
+      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', :placeholder => 'Credit Limit'%>
+      <h6>Card Details</h6>
+      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Cardholder Name'%>
+      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => 'Card Number'%>
+      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => 'Security Code'%>
+      <h6 style="margin-bottom: 0px;">Expiration Date</h6>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-11-24 input-field">
+          <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: {'braintree-name' => 'expiration_month'} } %>
+        </div>
+        <div class="pure-u-md-1-12"></div>
+        <div class="pure-u-1 pure-u-md-11-24 input-field">
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="commit">Add Card</button>
     <% end %>
   </div>
-</body>
+</div>

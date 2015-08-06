@@ -1,14 +1,13 @@
 @import "logo";
 
 .jp-card-logo.jp-card-mastercard {
-    // display: none;
     $red: #FF0000;
     $yellow: #FFAB00;
     $offset: 0;
     color: white;
     font-weight: bold;
     text-align: center;
-    font-size: 9px;
+    font-size: 12px;
     line-height: $logo-height;
     z-index: 1;
     text-shadow: 1px 1px rgba(0, 0, 0, .6);
