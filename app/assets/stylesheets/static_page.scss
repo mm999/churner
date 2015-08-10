@@ -1,0 +1,16 @@
+// Place all the styles related to the static_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.about-container {
+  max-width: 600px;
+  margin: 2% auto 10% auto;
+
+  h4, h5, h6 {
+    color: $churner-blue;
+  }
+
+  h6 {
+    margin-bottom: 10px;
+  }
+}

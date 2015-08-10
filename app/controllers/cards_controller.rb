@@ -62,35 +62,41 @@ class CardsController < ApplicationController
 		end
 	end
 
-	# def edit
-	# 	if Card.find(params[:id]).customer_id == current_user.customer_id
-	# 		@card = Card.find(params[:id])
-	# 		@bt_card = Braintree::PaymentMethod.find(@card.card_token)
-	# 	else
-	# 		flash[:error] = "Card does not exi"
-	# 		redirect_to cards_path
-	# 	end
-	# end
+	def edit
+		if Card.find(params[:id]).customer_id == current_user.customer_id
+			@card = Card.find(params[:id])
+			@bt_card = Braintree::PaymentMethod.find(@card.card_token)
+			@client_token = Braintree::ClientToken.generate
+		else
+			flash[:error] = "Card does not exist"
+			redirect_to cards_path
+		end
+	end
 
-	# def update
-	# 	bt_card = Braintree::PaymentMethod.update(
-	# 		params[:card_token],
-	# 		:payment_method_nonce => params[:payment_method_nonce] )
-	# 	if bt_card.success?
-	# 		card = Card.find(params[:id])
-	# 		card.name = params[:card_name]
-	# 		card.bank_name = params[:bank_name]
-	# 		card.issue_date = params[:issue_date]
-	# 		card.annual_fee = params[:annual_fee]
-	# 		card.issue_date = params[:issue_date]
-	# 		redirect_to card_path
-	# 	else
-	# 		card.errors.each do |error|
-	# 			flash[:error] = error.message
-	# 		end
-	# 		redirect_to edit_card_path
-	# 	end
-	# end
+	def update
+		bt_card = Braintree::PaymentMethod.update(
+			params[:card_token],
+			:payment_method_nonce => params[:payment_method_nonce] )
+		if bt_card.success?
+			card = Card.find(params[:id])
+			params[:card_name]    != "" ? card.name = params[:card_name] : nil
+			params[:bank_name]    != "" ? card.bank_name = params[:bank_name] : nil
+			params[:issue_date]   != "" ? card.issue_date = params[:issue_date] : nil
+			params[:annual_fee]   != "" ? card.annual_fee = params[:annual_fee] : nil
+			params[:credit_limit] != "" ? card.credit_limit = params[:credit_limit] : nil
+			if card.save
+				redirect_to card_path
+			else
+				flash[:error] = "Card not updated"
+				redirect_to card_path
+			end
+		else
+			bt_card.errors.each do |error|
+				flash[:error] = error.message
+			end
+			redirect_to edit_card_path
+		end
+	end
 
 	def destroy
 		if Braintree::PaymentMethod.delete(Card.find(params[:id]).card_token)
@@ -107,8 +113,8 @@ class CardsController < ApplicationController
 
 	private
 
-  def add_card_params
-    params.require(:payment_method_nonce, :card_name).permit(:bank_name, :issue_date, :annual_fee, :credit_limit)
+  def card_params
+    params.require(:payment_method_nonce).permit(:bank_name, :card_name, :issue_date, :annual_fee, :credit_limit)
   end
 
 end

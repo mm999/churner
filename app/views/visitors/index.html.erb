@@ -3,112 +3,112 @@
 <% end %>
 
 <div class="splash-container">
-    <div class="splash">
-        <h1 class="splash-head">Churner.io</h1>
-        <p class="splash-subhead">
-            Welcome to Churner.io, a credit card manager
-        </p>
-        <p>
-            <% if user_signed_in? %>
-                <a href="<%= cards_path %>" class="waves-effect waves-light btn-large">My Cards</a>
-            <% else %>
-                <a href="<%= new_user_session_path %>" class="waves-effect waves-light btn-large">Sign In</a>
-                &nbsp&nbsp&nbsp&nbsp
-                <a href="<%= new_user_registration_path %>" class="waves-effect waves-light btn-large">Sign Up</a>
-            <% end %>
-        </p>
-    </div>
+  <div class="splash">
+    <h1 class="splash-head">Churner.io</h1>
+    <p class="splash-subhead">
+      Welcome to Churner.io, a credit card manager
+    </p>
+    <p>
+      <% if user_signed_in? %>
+        <a href="<%= cards_path %>" class="waves-effect waves-light btn-large">My Cards</a>
+      <% else %>
+        <a href="<%= new_user_session_path %>" class="waves-effect waves-light btn-large">Sign In</a>
+        &nbsp&nbsp&nbsp&nbsp
+        <a href="<%= new_user_registration_path %>" class="waves-effect waves-light btn-large">Sign Up</a>
+      <% end %>
+    </p>
+  </div>
 </div>
 
 <div class="content-wrapper">
-<!--     <div class="content">
-        <h2 class="content-head is-center">Churner helps you manage and keep track of all of your cards, miles, and points</h2>
+<!--   <div class="content">
+    <h2 class="content-head is-center">Churner helps you manage and keep track of all of your cards, miles, and points</h2>
 
-        <div class="pure-g">
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+    <div class="pure-g">
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
 
-                <h3 class="content-subhead">
-                    <i class="fa fa-rocket"></i>
-                    Get Started Quickly
-                </h3>
-                <p>
-                    Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                </p>
-            </div>
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                <h3 class="content-subhead">
-                    <i class="fa fa-mobile"></i>
-                    Responsive Layouts
-                </h3>
-                <p>
-                    Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                </p>
-            </div>
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                <h3 class="content-subhead">
-                    <i class="fa fa-th-large"></i>
-                    Modular
-                </h3>
-                <p>
-                    Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                </p>
-            </div>
-            <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-                <h3 class="content-subhead">
-                    <i class="fa fa-check-square-o"></i>
-                    Plays Nice
-                </h3>
-                <p>
-                    Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
-                </p>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="ribbon l-box-lrg pure-g">
-        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
-            <img class="pure-img-responsive" alt="File Icons" width="300" src="https://s3-us-west-1.amazonaws.com/churner/images/credit_card.svg">
-        </div>
-        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
-
-            <h5 class="content-head content-head-ribbon">Churner.io is 100% secure</h5>
-
-            <p>
-                All card storage and payments processing is handled by <a href="https://www.braintreepayments.com/">Braintree Payments</a>,
-                the same payments company used by Uber, GitHub, and StubHub. Your credit
-                card data never touches our servers, and is always encrypted in transit
-                to Braintree. If all of our data was stolen, there would be no way for
-                the hackers to discover or otherwise use your credit card data.
-            </p>
-        </div>
+        <h3 class="content-subhead">
+          <i class="fa fa-rocket"></i>
+          Get Started Quickly
+        </h3>
+        <p>
+          Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+      </div>
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-mobile"></i>
+          Responsive Layouts
+        </h3>
+        <p>
+          Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+      </div>
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-th-large"></i>
+          Modular
+        </h3>
+        <p>
+          Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+      </div>
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-check-square-o"></i>
+          Plays Nice
+        </h3>
+        <p>
+          Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.
+        </p>
+      </div>
     </div>
+  </div> -->
 
-    <div class="content content-footer">
-        <h5 class="content-head is-center">Join our email list and be the first to hear about new features!</h5>
-
-        <div class="pure-g">
-            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
-                <form class="input-field">
-                    <input id="name" type="text" placeholder="Your Name">
-                    <input id="email" type="email" placeholder="Your Email">
-                    <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
-                </form>
-            </div>
-
-            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-                <h6>Contact Us</h6>
-                <p>
-                    If you have any questions or comments please send an email to contact@churner.io
-                    and we will do our best to respond promptly.
-                </p>
-
-                <h6>More Information</h6>
-                <p>
-                    This site is brand new and lacks many features. We have many ideas for the future,
-                    but these new updates can only be supported through current participation and interest.
-                    If you have any ideas for new features please email us at features@churner.io Thank You!
-                </p>
-            </div>
-        </div>
+  <div class="ribbon l-box-lrg pure-g">
+    <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+      <img class="pure-img-responsive" alt="File Icons" width="300" src="https://s3-us-west-1.amazonaws.com/churner/images/credit_card.svg">
     </div>
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+      <h5 class="content-head content-head-ribbon">Churner.io is 100% secure</h5>
+
+      <p>
+        All card storage and payments processing is handled by <a href="https://www.braintreepayments.com/">Braintree Payments</a>,
+        the same payments company used by Uber, GitHub, and StubHub. Your credit
+        card data never touches our servers, and is always encrypted in transit
+        to Braintree. If all of our data was stolen, there would be no way for
+        the hackers to discover or otherwise use your credit card data.
+      </p>
+    </div>
+  </div>
+
+  <div class="content content-footer">
+    <h5 class="content-head is-center">Join our email list and be the first to hear about new features!</h5>
+
+    <div class="pure-g">
+      <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+        <form class="input-field">
+          <input id="name" type="text" placeholder="Your Name">
+          <input id="email" type="email" placeholder="Your Email">
+          <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
+        </form>
+      </div>
+
+      <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+        <h6>Contact Us</h6>
+        <p>
+          If you have any questions or comments please send an email to contact@churner.io
+          and we will do our best to respond promptly.
+        </p>
+
+        <h6>More Information</h6>
+        <p>
+          This site is brand new and lacks many features. We have many ideas for the future,
+          but these new updates can only be supported through current participation and interest.
+          If you have any ideas for new features please email us at features@churner.io Thank You!
+        </p>
+      </div>
+    </div>
+  </div>
 </div>

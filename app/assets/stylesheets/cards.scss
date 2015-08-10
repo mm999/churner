@@ -22,7 +22,7 @@
 }
 
 .delete-card-link {
-  color: #E03616 !important;
+  color: $churner-red !important;
   float: right !important;
   margin-right: 10px !important;
 }
@@ -32,11 +32,11 @@
 }
 
 body {
-  background: #ececec;
+  background: $churner-lgray;
 }
 
 .nav-wrapper {
-  background: #449DDC;
+  background: $churner-blue;
 }
 
 .root-nav-button {
@@ -49,7 +49,7 @@ body {
   margin: 18% auto 5% auto;
 
   h4, h6 {
-    color: #449DDC;
+    color: $churner-blue;
   }
 
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .delete-button {
-  background: #E03616;
+  background: $churner-red;
 }
 
 .add-card-form {

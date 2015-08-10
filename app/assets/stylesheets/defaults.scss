@@ -1,3 +1,4 @@
+// JP Card Defaults
 $card-width: 400px;
 $card-height: $card-width * (200/350);
 $card-border-radius: 0px;
@@ -6,3 +7,13 @@ $card-font-family: "Helvetica Neue";
 $card-monospace-font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
 $card-font-color: white;
 $card-transition-time: 400ms;
+
+// JP Card Logo Defaults
+$logo-height: 46px;
+$logo-width: $logo-height * (60/36);
+
+// My Color Scheme
+$churner-blue: #449DDC;
+$churner-green: #61E786;
+$churner-red: #E03616;
+$churner-lgray: #ECECEC;

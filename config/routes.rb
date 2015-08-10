@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post 'subscriptions/unsubscribe'
   post 'cards/delete'
   root :to => 'visitors#index'
+  get '/about' => 'static_page#about'
 end

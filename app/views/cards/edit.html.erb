@@ -1,57 +1,35 @@
 <% content_for :head do %>
-  <%= render 'javascript' %>
+  <%= render 'edit_javascript' %>
 <% end %>
 
-<div class="header">
-	<h1>Edit <%= @card.bank_name %> <%= @card.name %></h1>
-	<h2>Change all of your card details here</h2>
-</div>
-
-<div class="content">
-
-  <p>
-    <%= form_tag({:controller => 'cards', :action => 'update'}, {:method => "patch", :class => 'pure-form pure-form-aligned', :id => 'edit-card-form'}) do %>
-      <div class="pure-control-group">
-        <%= label_tag :bank_name, "Bank Name" %>
-        <%= text_field_tag :bank_name, nil, name: 'bank_name', class: "pure-input-1-2", placeholder: @card.bank_name %>
+<div class='container'>
+  <div class='auth-container card-panel add-card-form'>
+    <%= form_tag({:controller => 'cards', :action => 'update'}, {:onsubmit => "return btInit()", :method => "patch", :class => 'input-field', :id => 'card-form'}) do %>
+      <h4>Edit Your Card Details</h4>
+      <h6>Card Labels</h6>
+      <%= text_field_tag :bank_name, nil, name: 'bank_name', placeholder: "Bank Name: " + @card.bank_name %>
+      <%= text_field_tag :card_name, nil, name: 'card_name', placeholder: "Card Name: " + @card.name %>
+      <h6>Issue Date, Annual Fee, Credit Limit</h6>
+      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => 'Card Issue Date: ' + @card.issue_date.strftime("%b %e, %Y"), :class => "datepicker", :id => "datepicker" %>
+      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', placeholder: "Annual Fee: $" + @card.annual_fee.to_s %>
+      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', placeholder: "Credit Limit: $" + @card.credit_limit.to_s %>
+      <h6>Card Details</h6>
+      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Name: ' + @bt_card.cardholder_name %>
+      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => "Card Number"  %>
+      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => "Security Code" %>
+      <h6 style="margin-bottom: 0px;">Expiration Date</h6>
+      <div class="pure-g">
+        <div class="pure-u-1 pure-u-md-11-24 input-field">
+          <%= select_month @bt_card.expiration_month.to_i, { use_two_digit_numbers: true}, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_month'} } %>
+        </div>
+        <div class="pure-u-md-1-12"></div>
+        <div class="pure-u-1 pure-u-md-11-24 input-field">
+          <%= select_year @bt_card.expiration_year.to_i, {start_year: Date.today.year, end_year: Date.today.year+10}, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_year'} } %>
+        </div>
       </div>
-      <div class="pure-control-group">
-        <%= label_tag :card_name, "Card Name" %>
-        <%= text_field_tag :card_name, nil, name: 'card_name', class: "pure-input-1-2", placeholder: @card.name %>
-      </div>
-      <br>
-      <div class="pure-control-group">
-        <%= label_tag :issue_date, "Card Issue Date" %>
-        <%= date_field :issue_date, nil, name: 'issue_date', class: "pure-input-1-2", placeholder: "1993-03-01" %>
-      </div>
-      <div class="pure-control-group">
-        <%= label_tag :annual_fee, "Annual Fee" %>
-        <%= text_field_tag :annual_fee, nil, name: 'annual_fee', class: "pure-input-1-2", placeholder: @card.annual_fee %>
-      </div>
-      <div class="pure-control-group">
-        <%= label_tag :credit_limit, "Credit Limit" %>
-        <%= text_field_tag :credit_limit, nil, name: 'credit_limit', class: "pure-input-1-2", placeholder: @card.credit_limit %>
-      </div>
-      <br>
-      <div class="pure-control-group">
-        <%= label_tag :card_number, "Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'number'}  %>
-      </div>
-      <div class="pure-control-group">
-        <%= label_tag :card_code, "Security Code" %>
-        <%= text_field_tag :card_code, nil, name: nil, class: "pure-input-1-2", data: { 'braintree-name' => 'cvv' } %>
-      </div>
-      <div class="pure-control-group">
-        <%= label_tag :card_month, "Expiration Date" %>
-        <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: {'braintree-name' => 'expiration_month'} } %>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
-      </div>
-      <div class="pure-controls">
-        <%= hidden_field_tag 'card_token', @bt_card.token %>
-        <%= submit_tag 'Update Card', :class => 'pure-button pure-input-2-3 pure-button-primary' %>
-      </div>
+      <%= hidden_field_tag 'card_token', @bt_card.token %>
+      <button id="submit_button" class="btn waves-effect waves-light" type="submit" name="commit">Update Card</button>
     <% end %>
-  </p>
   
 </div>
 

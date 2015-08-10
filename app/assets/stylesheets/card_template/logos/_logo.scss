@@ -1,6 +1,3 @@
-$logo-height: 46px;
-$logo-width: $logo-height * (60/36);
-
 @include exports("_logo.scss") {
     .jp-card-logo {
         &, &:before, &:after {
