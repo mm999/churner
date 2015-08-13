@@ -1,5 +1,5 @@
 <div class='container'>
-	<div class='auth-container card-panel'>
+	<div class='form-container card-panel'>
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class => 'input-field', :method => :post, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
     <h4>Password Reset</h4>

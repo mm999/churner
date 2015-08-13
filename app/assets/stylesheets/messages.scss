@@ -1,0 +1,41 @@
+.alert-danger {
+	background: $churner-red;
+}
+
+.alert-success {
+	background: $churner-green;
+}
+
+.alert-info {
+	background: $churner-blue;
+}
+
+.alert-warning {
+	background: $churner-orange;
+}
+
+.close-button {
+	float: right;
+	height: 32.0938px;
+	font-size: 140%;
+	background: white;
+	margin-right: 0.5%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	line-height: 0px;
+}
+
+.alert {
+	height: 42.0938px;
+	border: none;
+	margin: none;
+}
+
+.alert-text {
+	float: left;
+	color: white;
+	line-height: 42.0938px;
+	padding-left: 1%;
+}

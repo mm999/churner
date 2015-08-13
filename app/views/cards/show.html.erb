@@ -5,7 +5,7 @@
         <div class='jp-card jp-card-<%= @bt_card.card_type.downcase.delete(' ') %> jp-card-identified'>
           <div class='jp-card-front'>
             <div class="jp-card-label jp-card-display">
-              <%= @card.bank_name %> <%= @card.name %>
+              <%= @card.name %>
             </div>
             <div class='jp-card-logo jp-card-<%= @bt_card.card_type.downcase.delete(' ') %>'>
             <%= @bt_card.card_type.downcase.delete(' ') == 'americanexpress' ? '' : @bt_card.card_type.downcase.delete(' ') %>
@@ -29,14 +29,18 @@
           </tr>
           <tr>
             <th>Annual Fee:</th>
-            <td>$<%= @card.annual_fee.to_s %></td>
+            <td><%= number_to_currency(@card.annual_fee) %></td>
           </tr>
           <tr>
             <th>Credit Limit:</th>
-            <td>$<%= @card.credit_limit %></td>
+            <td><%= number_to_currency(@card.credit_limit) %></td>
           </tr>
         </tbody>
       </table>
+      <div class="notes">
+      <h6>Notes:</h6>
+      <p><%= @card.note %></p>
+      </div>
     </div>
     <div class='card-action'>
     <%= link_to 'Edit Card', edit_card_path(:id => @card.id) %>

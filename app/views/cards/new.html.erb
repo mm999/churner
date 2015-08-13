@@ -3,20 +3,43 @@
 <% end %>
 
 <div class='container'>
-  <div class='auth-container card-panel add-card-form'>
-    <%= form_tag({:action => 'create'}, {:class => 'input-field', :id => 'card-form'}) do %>
+  <div class='form-container card-panel add-card-form'>
+    <%= form_tag({:action => 'create'}, {:id => 'card-form'}) do %>
       <h4>Add A Card</h4>
-      <h6>Card Labels</h6>
-      <%= text_field_tag :bank_name, nil, name: 'bank_name', :required => true, :placeholder => 'Bank Name'%>
-      <%= text_field_tag :card_name, nil, name: 'card_name', :required => true, :placeholder => 'Card Name'%>
-      <h6>Issue Date, Annual Fee, Credit Limit</h6>
-      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => 'Card Issue Date', :class => "datepicker", :id => "datepicker" %>
-      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', :placeholder => 'Annual Fee'%>
-      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', :placeholder => 'Credit Limit'%>
-      <h6>Card Details</h6>
-      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Cardholder Name'%>
-      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => 'Card Number'%>
-      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => 'Security Code'%>
+      <div class="input-field">
+      <%= text_field_tag :name, nil, name: 'name', :required => true%>
+      <%= label_tag :name, 'Card Name' %>
+      </div>
+      <div class="input-field">
+      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => '', :class => "datepicker", :id => "datepicker" %>
+      <%= label_tag :issue_date, 'Card Issue Date' %>
+      </div>
+      <div class="input-field">
+      <%= number_field_tag :annual_fee, nil, name: 'annual_fee', min: 0, max: 999999999, step: 0.01 %>
+      <%= label_tag :annual_fee, 'Annual Fee' %>
+      </div>
+      <div class="input-field">
+      <%= number_field_tag :credit_limit, nil, name: 'credit_limit', min: 0, max: 999999999, step: 0.01 %>
+      <%= label_tag :credit_limit, 'Credit Limit' %>
+      </div>
+      <div class="input-field">
+      <%= text_area_tag :note, nil, name: 'note', :class => 'materialize-textarea', :length => 250 %>
+      <%= label_tag :note, 'Card Notes' %>
+      </div>
+
+      <h6>Card Information</h6>
+      <div class="input-field">
+      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'} %>
+      <%= label_tag :cardholder_name, 'Cardholder Name' %>
+      </div>
+      <div class="input-field">
+      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'} %>
+      <%= label_tag :card_number, 'Card Number' %>
+      </div>
+      <div class="input-field">
+      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' } %>
+      <%= label_tag :card_code, 'Security Code' %>
+      </div>
       <h6 style="margin-bottom: 0px;">Expiration Date</h6>
       <div class="pure-g">
         <div class="pure-u-1 pure-u-md-11-24 input-field">
@@ -27,7 +50,7 @@
           <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: {'braintree-name' => 'expiration_year'} } %>
         </div>
       </div>
-      <button class="btn waves-effect waves-light" type="submit" name="commit">Add Card</button>
+      <button class="btn waves-effect waves-light" type="submit" name="commit">Add Card & Subscribe</button>
     <% end %>
   </div>
 </div>

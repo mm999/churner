@@ -1,5 +1,5 @@
 <div class='content'>
-  <div class="auth-container card-panel" style="margin-top: 5%;">
+  <div class="form-container card-panel" style="margin-top: 5%;">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'input-field', :method => :put, :role => 'form'}) do |f| %>
       <h4>Edit Account</h4>
       <%= devise_error_messages! %>
@@ -21,12 +21,12 @@
     <% end %>
   </div>
 
-  <div class="auth-container card-panel" style="margin-top: 0%;">
+  <div class="form-container card-panel" style="margin-top: 0%;">
     <h4>Cancel Account</h4>
     <% if Braintree::Customer.find(current_user.customer_id).credit_cards.length == 0 %>
       <form method="post" action="/users">
         <input type="hidden" name="_method" value="delete">
-        <button data-confirm="Are you sure?" type="submit" class="btn waves-effect waves-light delete-button red">Cancel My Account</button>
+        <button data-confirm="Are you sure?" type="submit" class="btn waves-effect waves-light delete-account-button red">Cancel My Account</button>
         <input type="hidden" name="authenticity_token" value="EmS1mRAWNpbZt4I2wEsX6/n55IFPxikV+3HD23y49TVzqy2zGLf07uNa6Xy9+0CXGyuks9FIoVaJ852YBOpc0A==">
       </form>
     <% else %>

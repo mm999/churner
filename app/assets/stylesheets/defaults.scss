@@ -1,19 +1,53 @@
+// My Color Scheme
+$churner-blue: #449DDC;
+$churner-green: #009688;
+$churner-red: #E03616;
+$churner-orange: #FF6D00;
+$churner-lgray: #ECEFF1;
+$churner-dgray: #455A64;
+
+// Content Colors
+$navbar-color: $churner-blue;
+$navbar-color-home: $churner-lgray;
+$heading-color: $churner-blue;
+$home-background: $churner-blue;
+$home-footer-color: $churner-dgray;
+$body-background: $churner-lgray;
+$dark-text: $churner-dgray;
+
 // JP Card Defaults
 $card-width: 400px;
 $card-height: $card-width * (200/350);
 $card-border-radius: 0px;
-$card-fill-color: #3399CC;
+$card-fill-color: $churner-dgray;
 $card-font-family: "Helvetica Neue";
 $card-monospace-font-family: "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
-$card-font-color: white;
+$card-font-color: $churner-lgray;
 $card-transition-time: 400ms;
 
 // JP Card Logo Defaults
 $logo-height: 46px;
 $logo-width: $logo-height * (60/36);
 
-// My Color Scheme
-$churner-blue: #449DDC;
-$churner-green: #61E786;
-$churner-red: #E03616;
-$churner-lgray: #ECECEC;
+// Global Styles
+body {
+  background: $churner-lgray;
+}
+
+h, h2, h3, h4, h5, h6, label {
+	color: $heading-color;
+}
+
+a {
+	color: $churner-blue;
+}
+
+
+// Button Styles
+//
+// Default button color:
+.btn {
+	background: $churner-green;
+	font-color: $churner-lgray;
+}
+// Default button hover color

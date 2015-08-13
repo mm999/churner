@@ -10,7 +10,7 @@
 						      <div class='jp-card-front'>
 						      <!-- Make card panel hoverable when you add it -->
 					      		<div class="jp-card-label jp-card-display">
-		      						<%= Card.where(card_token: card.token).take.bank_name %> <%= Card.where(card_token: card.token).take.name %>
+		      						<%= Card.where(card_token: card.token).take.name %>
 		      					</div>
 						        <div class='jp-card-logo jp-card-<%= card.card_type.downcase.delete(' ') %>'>
 						        	<% if card.card_type.downcase.delete(' ') == 'americanexpress' %>

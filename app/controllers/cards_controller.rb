@@ -31,13 +31,13 @@ class CardsController < ApplicationController
 
 	  if card.success?
 	  	@new_card = Card.new(
-	  		:name => params[:card_name],
+	  		:customer_id => customer.id,
 	  		:card_token => card.payment_method.token,
+	  		:name => params[:name],
 	  		:issue_date => params[:issue_date],
 	  		:annual_fee => params[:annual_fee],
 	  		:credit_limit => params[:credit_limit],
-	  		:bank_name => params[:bank_name],
-	  		:customer_id => customer.id )
+	  		:note => params[:note])
 	  	if @new_card.save
 				sub = Braintree::Subscription.create(
 					:payment_method_token => card.payment_method.token,
@@ -74,28 +74,34 @@ class CardsController < ApplicationController
 	end
 
 	def update
-		bt_card = Braintree::PaymentMethod.update(
-			params[:card_token],
-			:payment_method_nonce => params[:payment_method_nonce] )
-		if bt_card.success?
+		# Removing ability to edit actual card details until I can figure out
+		# how to make them optonal fields using Braintree.js, but then be
+		# required fields once something is entered. What needs to happen is
+		# Braintree.js shouldn't init until after the user starts to edit thier
+		# card details. Then if they do (like change the expiration), the rest of
+		# the fields are marked as required as well.
+		# bt_card = Braintree::PaymentMethod.update(
+		# 	params[:card_token],
+		# 	:payment_method_nonce => params[:payment_method_nonce] )
+		# if bt_card.success?
 			card = Card.find(params[:id])
-			params[:card_name]    != "" ? card.name = params[:card_name] : nil
-			params[:bank_name]    != "" ? card.bank_name = params[:bank_name] : nil
+			params[:name]    != "" ? card.name = params[:name] : nil
 			params[:issue_date]   != "" ? card.issue_date = params[:issue_date] : nil
 			params[:annual_fee]   != "" ? card.annual_fee = params[:annual_fee] : nil
 			params[:credit_limit] != "" ? card.credit_limit = params[:credit_limit] : nil
+			params[:note]         != "" ? card.note = params[:note] : nil
 			if card.save
 				redirect_to card_path
 			else
 				flash[:error] = "Card not updated"
 				redirect_to card_path
 			end
-		else
-			bt_card.errors.each do |error|
-				flash[:error] = error.message
-			end
-			redirect_to edit_card_path
-		end
+		# else
+		# 	bt_card.errors.each do |error|
+		# 		flash[:error] = error.message
+		# 	end
+		# 	redirect_to edit_card_path
+		# end
 	end
 
 	def destroy
@@ -114,7 +120,7 @@ class CardsController < ApplicationController
 	private
 
   def card_params
-    params.require(:payment_method_nonce).permit(:bank_name, :card_name, :issue_date, :annual_fee, :credit_limit)
+    params.require(:payment_method_nonce).permit(:name, :issue_date, :annual_fee, :credit_limit)
   end
 
 end

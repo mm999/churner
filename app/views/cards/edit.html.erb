@@ -1,32 +1,57 @@
-<% content_for :head do %>
-  <%= render 'edit_javascript' %>
+<% if false %>
+          <% content_for :head do %>
+            <%= render 'edit_javascript' %>
+          <% end %>
 <% end %>
 
 <div class='container'>
-  <div class='auth-container card-panel add-card-form'>
-    <%= form_tag({:controller => 'cards', :action => 'update'}, {:onsubmit => "return btInit()", :method => "patch", :class => 'input-field', :id => 'card-form'}) do %>
+  <div class='form-container card-panel add-card-form'>
+    <%= form_tag({:controller => 'cards', :action => 'update'}, {:onsubmit => "return btInit()", :method => "patch", :id => 'card-form'}) do %>
       <h4>Edit Your Card Details</h4>
-      <h6>Card Labels</h6>
-      <%= text_field_tag :bank_name, nil, name: 'bank_name', placeholder: "Bank Name: " + @card.bank_name %>
-      <%= text_field_tag :card_name, nil, name: 'card_name', placeholder: "Card Name: " + @card.name %>
-      <h6>Issue Date, Annual Fee, Credit Limit</h6>
-      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => 'Card Issue Date: ' + @card.issue_date.strftime("%b %e, %Y"), :class => "datepicker", :id => "datepicker" %>
-      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', placeholder: "Annual Fee: $" + @card.annual_fee.to_s %>
-      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', placeholder: "Credit Limit: $" + @card.credit_limit.to_s %>
-      <h6>Card Details</h6>
-      <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Name: ' + @bt_card.cardholder_name %>
-      <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => "Card Number"  %>
-      <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => "Security Code" %>
-      <h6 style="margin-bottom: 0px;">Expiration Date</h6>
-      <div class="pure-g">
-        <div class="pure-u-1 pure-u-md-11-24 input-field">
-          <%= select_month @bt_card.expiration_month.to_i, { use_two_digit_numbers: true}, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_month'} } %>
-        </div>
-        <div class="pure-u-md-1-12"></div>
-        <div class="pure-u-1 pure-u-md-11-24 input-field">
-          <%= select_year @bt_card.expiration_year.to_i, {start_year: Date.today.year, end_year: Date.today.year+10}, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_year'} } %>
-        </div>
+
+
+      <div class="input-field">
+      <%= text_field_tag :name, nil, name: 'name', placeholder: @card.name %>
+      <%= label_tag :name, 'Card Name' %>
       </div>
+      <div class="input-field">
+      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => @card.issue_date.strftime("%b %e, %Y"), :class => "datepicker", :id => "datepicker" %>
+      <%= label_tag :issue_date, 'Card Issue Date' %>
+      </div>
+      <div class="input-field">
+      <%= text_field_tag :annual_fee, nil, name: 'annual_fee', placeholder: @card.annual_fee.to_s %>
+      <%= label_tag :annual_fee, 'Annual Fee' %>
+      </div>
+      <div class="input-field">
+      <%= text_field_tag :credit_limit, nil, name: 'credit_limit', placeholder: @card.credit_limit.to_s %>
+      <%= label_tag :credit_limit, 'Credit Limit' %>
+      </div>
+      <div class="input-field">
+      <%= text_area_tag :note, nil, name: 'note', :class => 'materialize-textarea', placeholder: @card.note, :length => 250 %>
+      <%= label_tag :note, 'Card Notes' %>
+      </div>
+      <% if false %>
+                # Removing ability to edit actual card details until I can figure out
+                # how to make them optonal fields using Braintree.js, but then be
+                # required fields once something is entered. What needs to happen is
+                # Braintree.js shouldn't init until after the user starts to edit thier
+                # card details. Then if they do (like change the expiration), the rest of
+                # the fields are marked as required as well.
+                <h6>Card Details</h6>
+                <%= text_field_tag :cardholder_name, nil, name: nil, :required => true, data: { 'braintree-name' => 'cardholder_name'}, :placeholder => 'Name: ' + @bt_card.cardholder_name %>
+                <%= text_field_tag :card_number, nil, name: nil, :required => true, data: { 'braintree-name' => 'number'}, :placeholder => "Card Number"  %>
+                <%= text_field_tag :card_code, nil, name: nil, :required => true, data: { 'braintree-name' => 'cvv' }, :placeholder => "Security Code" %>
+                <h6 style="margin-bottom: 0px;">Expiration Date</h6>
+                <div class="pure-g">
+                  <div class="pure-u-1 pure-u-md-11-24 input-field">
+                    <%= select_month @bt_card.expiration_month.to_i, { use_two_digit_numbers: true }, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_month'} } %>
+                  </div>
+                  <div class="pure-u-md-1-12"></div>
+                  <div class="pure-u-1 pure-u-md-11-24 input-field">
+                    <%= select_year @bt_card.expiration_year.to_i, {start_year: Date.today.year, end_year: Date.today.year+10}, {onchange: "btInitExpiration()", name: nil, data: {'braintree-name' => 'expiration_year'} } %>
+                  </div>
+                </div>
+      <% end %>
       <%= hidden_field_tag 'card_token', @bt_card.token %>
       <button id="submit_button" class="btn waves-effect waves-light" type="submit" name="commit">Update Card</button>
     <% end %>

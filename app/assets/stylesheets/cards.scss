@@ -2,16 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card-bank-label {
-  text-align: center;
-  font-weight: 900;
-  font-size: 1.2em;
-}
-
-.card-wrapper {
-  margin-bottom: 20px;
-}
-
+// Div to hold css credit card
 .card-ccholder {
   width: $card-width;
   max-width: 95%;
@@ -21,59 +12,19 @@
   margin: 8% auto;
 }
 
+// Delete card link on show card page
 .delete-card-link {
   color: $churner-red !important;
   float: right !important;
   margin-right: 10px !important;
 }
 
+// Table row style for show card page
 .card-content tr {
   line-height: 10px;
 }
 
-body {
-  background: $churner-lgray;
-}
-
-.nav-wrapper {
-  background: $churner-blue;
-}
-
-.root-nav-button {
-  font-size: 1.5em;
-  margin-left: 2%;
-}
-
-.auth-container {
-  max-width: 400px;
-  margin: 18% auto 5% auto;
-
-  h4, h6 {
-    color: $churner-blue;
-  }
-
-}
-
-.p-override {
-  margin: 0px 0px 10px;
-}
-
-.check-override {
-  font-size: .9em !important;
-  top: 0px !important;
-  left: 0px !important;
-  margin-top: 3px !important;
-}
-
-.delete-button {
-  background: $churner-red;
-}
-
-.add-card-form {
-  margin: 2% auto 10% auto;
-  max-width: 500px;
-
-  h4 {
-    margin-bottom: 30px;
-  }
+// Align notes section with table
+.notes {
+  padding-left: 5px;
 }

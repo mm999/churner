@@ -1,0 +1,22 @@
+.nav-wrapper {
+  background: $navbar-color;
+
+  a {
+	color: $churner-lgray;
+	}
+}
+
+// Navbar is different color on the home page
+.nav-wrapper-home {
+  background: $navbar-color-home;
+
+  a {
+	color: $churner-blue;
+	}
+}
+
+
+.root-nav-button {
+  font-size: 1.5em;
+  margin-left: 2%;
+}

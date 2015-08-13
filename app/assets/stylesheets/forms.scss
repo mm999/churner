@@ -1,0 +1,40 @@
+// Div to hold forms
+.form-container {
+  max-width: 400px;
+  margin: 18% auto 5% auto;
+}
+
+// Special styling for the add card form
+.add-card-form {
+  margin: 2% auto 10% auto;
+  max-width: 500px;
+
+  h4 {
+    margin-bottom: 30px;
+  }
+}
+
+// Checkbox on sign-in page
+.check-override {
+  font-size: .9em !important;
+  top: 0px !important;
+  left: 0px !important;
+  margin-top: 3px !important;
+}
+
+// Close account button on edit account page
+.delete-account-button {
+  background: $churner-red;
+}
+
+// Override paragrpah styling on sign in checkbox
+.check-p-override {
+  margin: 0px 0px 10px;
+}
+
+// Override label margin to display properly with materialize.css
+.input-field {
+  label {
+    left: 0rem;
+  }
+}
