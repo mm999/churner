@@ -41,7 +41,9 @@ h, h2, h3, h4, h5, h6, label {
 a {
 	color: $churner-blue;
 }
-
+.container {
+	width: 90%;
+}
 
 // Button Styles
 //
@@ -50,4 +52,3 @@ a {
 	background: $churner-green;
 	font-color: $churner-lgray;
 }
-// Default button hover color

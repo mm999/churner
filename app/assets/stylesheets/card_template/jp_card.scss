@@ -9,6 +9,7 @@
 .jp-card-container {
   width: 100%;
   max-width: $card-width;
+  min-width: 320px;
   height: $card-height;
   z-index: 1;
 }
@@ -99,6 +100,15 @@
       overflow: hidden;
       text-overflow: ellipsis;
       width: 63%;
+      }
+
+    @media only screen and (max-width : 400px) {
+      
+      .jp-card-label {
+        left: 5%;
+        font-size: 17px;
+      }
+
     }
 
     .jp-card-lower {
@@ -107,11 +117,6 @@
       position: absolute;
       left: (100% - $width) / 2;
       bottom: 27px;
-
-      @media only screen and (max-width : 480px) {
-        width: 90%;
-        left: 5%;
-      }
 
       .jp-card-number {
         font-family: $card-monospace-font-family;
@@ -169,6 +174,24 @@
         -webkit-box-orient: horizontal;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      // Small screens like iPhone 6, changes when card scales down from default of 400px
+      @media only screen and (max-width : 400px) {
+        width: 90%;
+        left: 5%;
+
+        .jp-card-name {
+          font-size: 17px;
+        }
+      }
+
+      // Super small screens like iPhone 5
+      @media only screen and (max-width : 360px) {
+
+        .jp-card-number {
+          font-size: 25px;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 <div class='container'>
 	<div class='pure-g'>
 		<% @cards.each do |card| %>
-			<div class='pure-u-1 pure-u-md-1-2'>
+			<div class='pure-u-1 pure-u-lg-1-2 c-box'>
   			<div class='card card-ccholder hoverable'>
     			<div class='card-image'>
 					  <div class='jp-card-container'>
@@ -13,11 +13,7 @@
 		      						<%= Card.where(card_token: card.token).take.name %>
 		      					</div>
 						        <div class='jp-card-logo jp-card-<%= card.card_type.downcase.delete(' ') %>'>
-						        	<% if card.card_type.downcase.delete(' ') == 'americanexpress' %>
-						        		<%= '' %>
-						        	<% else %>
-						        		<%= card.card_type.downcase.delete(' ') %>
-						        	<% end %>
+						        	<%= card.card_type.downcase.delete(' ') == 'americanexpress' ? '' : card.card_type.downcase.delete(' ') %>
 						        </div>
 						        <div class='jp-card-lower'>
 						          <div class='jp-card-shiny'></div>
