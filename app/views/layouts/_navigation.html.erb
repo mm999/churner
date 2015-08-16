@@ -11,7 +11,11 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
       	<%= render 'layouts/navigation_links' %>
       </ul>
-      <ul class="side-nav blue" id="mobile-demo">
+      <% if request.env['PATH_INFO'] == "/" %>
+        <ul class="side-nav" id="mobile-demo">
+      <% else %>
+        <ul class="side-nav side-nav-all" id="mobile-demo">
+      <% end %>
       	<li><%= link_to 'Churner.io', root_path %></li>
       	<%= render 'layouts/navigation_links' %>
       </ul>
