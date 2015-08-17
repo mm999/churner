@@ -74,18 +74,21 @@ class CardsController < ApplicationController
 	end
 
 	def update
-		# Removing ability to edit actual card details until I can figure out
-		# how to make them optonal fields using Braintree.js, but then be
-		# required fields once something is entered. What needs to happen is
-		# Braintree.js shouldn't init until after the user starts to edit thier
-		# card details. Then if they do (like change the expiration), the rest of
-		# the fields are marked as required as well.
-		# bt_card = Braintree::PaymentMethod.update(
-		# 	params[:card_token],
-		# 	:payment_method_nonce => params[:payment_method_nonce] )
-		# if bt_card.success?
+		if params[:card_token] != nil
+			bt_card = Braintree::PaymentMethod.update(
+				params[:card_token],
+				:payment_method_nonce => params[:payment_method_nonce] )
+			if bt_card.success?
+				redirect_to card_path
+			else
+				bt_card.errors.each do |error|
+					flash[:error] = error.message
+				end
+				redirect_to edit_card_path
+			end
+		else
 			card = Card.find(params[:id])
-			params[:name]    != "" ? card.name = params[:name] : nil
+			params[:name]         != "" ? card.name = params[:name] : nil
 			params[:issue_date]   != "" ? card.issue_date = params[:issue_date] : nil
 			params[:annual_fee]   != "" ? card.annual_fee = params[:annual_fee] : nil
 			params[:credit_limit] != "" ? card.credit_limit = params[:credit_limit] : nil
@@ -93,15 +96,10 @@ class CardsController < ApplicationController
 			if card.save
 				redirect_to card_path
 			else
-				flash[:error] = "Card not updated"
+				flash[:error] = "Card Data Not Updated"
 				redirect_to card_path
 			end
-		# else
-		# 	bt_card.errors.each do |error|
-		# 		flash[:error] = error.message
-		# 	end
-		# 	redirect_to edit_card_path
-		# end
+		end
 	end
 
 	def destroy

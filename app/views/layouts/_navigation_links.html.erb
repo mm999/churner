@@ -4,6 +4,7 @@
   <li><%= link_to 'Add A Card', new_card_path %></li>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <li><%= link_to 'About', about_path %></li>
 <% else %>
 	<li><%= link_to 'About', about_path %></li>
   <li><%= link_to 'Sign in', new_user_session_path %></li>

@@ -14,6 +14,17 @@
   }
 }
 
+// Special styling for the edit card forms
+.edit-card-form {
+  margin: 2% auto 3% auto;
+  max-width: 500px;
+
+  h4 {
+    margin-bottom: 30px;
+  }
+}
+
+
 // Checkbox on sign-in page
 .check-override {
   font-size: .9em !important;

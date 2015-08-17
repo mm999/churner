@@ -1,20 +1,4 @@
 <script type="text/javascript" src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script type="text/javascript">
-
-braintree.setup("<%= @client_token %>", "custom", {id: "card-form"});
-
-// function btInit () {
-// 	if ( document.getElementById('card_number').value != "" || document.getElementById('card_code').value != "" || document.getElementById('cardholder_name').value != "" ) {
-// 		braintree.setup("<%= @client_token %>", "custom", {id: "card-form"});
-// 		alert('if');
-// 	}
-// 	alert('next');
-
-// 	return document.getElementById('submit_button').click();
-// 	// return false;
-// }
-
-// function btInitExpiration () {
-// 	braintree.setup("<%= @client_token %>", "custom", {id: "card-form"});
-// }
+braintree.setup("<%= @client_token %>", "custom", {id: "edit-card-form"});
 </script>
