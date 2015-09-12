@@ -51,6 +51,22 @@
         </div>
       </div>
       <button class="btn waves-effect waves-light" type="submit" name="commit">Add Card & Subscribe</button>
+      <button class="btn-floating waves-effect waves-light modal-trigger right" data-target="modal1">?</button>
     <% end %>
   </div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Subscription Help</h4>
+      <p>
+        Each card you add will be charged $1 every six months. This small charge prevents any unused cards from being closed, keeps all of your points and miles from expiring, and supports the continued development of Churner. Set up auto pay on any unused card you add to Churner in order to avoid unknown interest charges. If you believe this charge is too costly or could be implemented better, please email me at <%= mail_to "contact@churner.io" %> and I will take note. Thanks so much.
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="<%= root_path %>" class="modal-action modal-close waves-effect waves-orange deep-orange-text text-darken-3 left btn-flat ">Too Expensive :(</a>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green green-text text-accent-4 btn-flat ">Sounds Good!</a>
+    </div>
+  </div>
+
+
 </div>

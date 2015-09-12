@@ -80,22 +80,36 @@
   </div>
 
   <div class="content content-footer">
-    <h5 class="content-head is-center heading-color">Join our email list and be the first to hear about new features!</h5>
+    <h5 class="content-head is-center heading-color">Sign up to join the email list and be the first to hear about new features!</h5>
+
 
     <div class="pure-g">
-      <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
-        <form class="input-field content-head">
-          <h6 class="content-head heading-color footer-head">Join The List</h6>
-          <input id="name" type="text" placeholder="Your Name">
-          <input id="email" type="email" placeholder="Your Email">
-          <button type="submit" class="waves-effect waves-light btn">Sign Up</button>
-        </form>
-      </div>
+<!--  <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+        <div id="mc_embed_signup">
+          <form action="//srlingren.us11.list-manage.com/subscribe/post?u=881f0409823ccd42ced0b487d&amp;id=ed05f38268" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" class="input-field content-head" novalidate>
+            <div id="mc_embed_signup_scroll">
+              <h6 class="content-head heading-color footer-head">Join The List</h6>
+              <div class="mc-field-group">
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your Email">
+              </div>
+              <div class="mc-field-group">
+                <input type="text" value="" name="FNAME" class="" id="mce-FNAME" placeholder="Your Name">
+              </div>
+              <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+              </div>
+              <div style="position: absolute; left: -5000px;"><input type="text" name="b_881f0409823ccd42ced0b487d_ed05f38268" tabindex="-1" value=""></div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn waves-effect waves-light"></div>
+            </div>
+          </form>
+        </div>
+      </div> -->
 
-      <div class="l-box-lrg pure-u-1 pure-u-md-3-5 footer-text">
+      <div class="l-box-lrg pure-u-1 pure-u-md-5-5 footer-text">
         <h6 class="content-head heading-color footer-head">Contact Us</h6>
         <p>
-          If you have any questions or comments please send an email to contact@churner.io
+          If you have any questions or comments please send an email to <%= mail_to "contact@churner.io" %>
           and we will do our best to respond promptly.
         </p>
 
@@ -103,7 +117,7 @@
         <p>
           This site is brand new and lacks many features. We have many ideas for the future,
           but these new updates can only be supported through current participation and interest.
-          If you have any ideas for new features please email us at features@churner.io Thank You!
+          If you have any ideas for new features please email us at <%= mail_to "features@churner.io" %> Thank You!
         </p>
       </div>
     </div>

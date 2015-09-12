@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post 'cards/delete'
   root :to => 'visitors#index'
   get '/about' => 'static_page#about'
+  get '/privacy_policy' => 'static_page#privacy_policy'
 end
