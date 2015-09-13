@@ -9,7 +9,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
-gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 gem 'devise'
 gem 'gibbon', '~> 1.2.0'
 gem 'braintree'
@@ -21,6 +20,9 @@ group :development, :test do
 end
 group :development do
   gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-postgresql'
+  gem 'capistrano-secrets-yml'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
