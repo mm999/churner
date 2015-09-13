@@ -20,7 +20,7 @@ group :development, :test do
 end
 group :development do
   gem 'capistrano', '~> 3.4.0'
-  gem 'capistrano-rails'
+  gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-postgresql'
