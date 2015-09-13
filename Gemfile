@@ -21,6 +21,8 @@ end
 group :development do
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
   gem 'capistrano-postgresql'
   gem 'capistrano-secrets-yml'
   gem 'better_errors'
@@ -30,5 +32,4 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'google-analytics-rails'
-  gem 'unicorn'
 end
