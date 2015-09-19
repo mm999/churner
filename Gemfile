@@ -26,6 +26,7 @@ group :development do
   gem 'capistrano-postgresql'
   gem 'capistrano-secrets-yml'
   gem 'capistrano-safe-deploy-to'
+  gem 'capistrano-passenger'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
