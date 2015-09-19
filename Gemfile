@@ -35,9 +35,4 @@ group :production do
   gem 'rails_12factor'
   gem 'google-analytics-rails'
   gem 'passenger'
-  gem 'better_errors'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'rails_layout'
 end
