@@ -25,6 +25,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-postgresql'
   gem 'capistrano-secrets-yml'
+  gem 'capistrano-safe-deploy-to'
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'rails_layout'
@@ -32,5 +33,5 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'google-analytics-rails'
-  gem 'unicorn'
+  gem 'passenger'
 end
