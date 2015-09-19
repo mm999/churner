@@ -3,10 +3,9 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  CEO: Sean Lingren
+  Site: churner.io
+  Location: Oakland
 
 
 /* SITE */
