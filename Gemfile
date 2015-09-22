@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.2.3'
 gem 'rails', '4.2.4'
 gem 'pg'
 gem 'bourbon'
@@ -34,5 +34,4 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'google-analytics-rails'
-  gem 'passenger'
 end
