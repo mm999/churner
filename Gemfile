@@ -14,6 +14,7 @@ gem 'gibbon', '~> 1.2.0'
 gem 'braintree'
 gem 'sucker_punch'
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+gem 'puma'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
