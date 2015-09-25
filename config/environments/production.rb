@@ -86,8 +86,8 @@ Rails.application.configure do
       :address =>        'smtp.mandrillapp.com',
       :user_name =>      Rails.application.secrets.email_provider_username,
       :password =>       Rails.application.secrets.email_provider_apikey,
-      :domain =>         Rails.application.secrets.domain_name,
-      :authentication => :plain
+      # :domain =>         Rails.application.secrets.domain_name,
+      # :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
   
