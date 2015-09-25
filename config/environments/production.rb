@@ -82,11 +82,11 @@ Rails.application.configure do
   # }
 
   ActionMailer::Base.smtp_settings = {
-      :port =>           '587',
+      :port =>           '25',
       :address =>        'smtp.mandrillapp.com',
       :user_name =>      Rails.application.secrets.email_provider_username,
       :password =>       Rails.application.secrets.email_provider_apikey,
-      :domain =>         'heroku.com',
+      :domain =>         Rails.application.secrets.domain_name,
       :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
