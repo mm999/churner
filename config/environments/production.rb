@@ -84,13 +84,13 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
-      :user_name =>      Rails.application.secrets.email_provider_username,
-      :password =>       Rails.application.secrets.email_provider_apikey,
-      # :domain =>         Rails.application.secrets.domain_name,
-      # :authentication => :plain
+      :user_name =>      ENV['MANDRILL_USERNAME'],
+      :password =>       ENV['MANDRILL_APIKEY'],
+      :domain =>         Rails.application.secrets.domain_name,
+      :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
-  
+
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'churner.io' }
   # config.action_mailer.delivery_method = :smtp
