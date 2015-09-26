@@ -28,7 +28,6 @@ db/*.sqlite3
 .redcar/
 .sass-cache
 /config/config.yml
-/config/secrets.yml
 /config/deploy/*
 /coverage.data
 /coverage/
@@ -83,3 +82,6 @@ pickle-email-*.html
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Ignore application configuration
+/config/application.yml

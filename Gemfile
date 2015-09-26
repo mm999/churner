@@ -13,7 +13,7 @@ gem 'devise'
 gem 'gibbon', '~> 1.2.0'
 gem 'braintree'
 gem 'sucker_punch'
-gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+gem 'figaro'
 gem 'puma'
 group :development, :test do
   gem 'byebug'

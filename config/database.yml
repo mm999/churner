@@ -20,5 +20,5 @@ test:
 production:
   <<: *default
   database: churner-production
-  username: Rails.application.secrets.admin_name
-  password: Rails.application.secrets.admin_password
+  username: Figaro.env.admin_name
+  password: Figaro.env.admin_password
