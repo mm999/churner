@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <th>Card Issue Date:</th>
-            <td><%= @card.issue_date.strftime("%b %e, %Y") %></td>
+            <td><%= @card.issue_date? ? @card.issue_date.strftime("%b %e, %Y") : "" %></td>
           </tr>
           <tr>
             <th>Annual Fee:</th>
