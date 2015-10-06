@@ -25,6 +25,8 @@ class CardsController < ApplicationController
 	def create
 	  customer = Braintree::Customer.find(current_user.customer_id)
 
+	  num_cards = Card.where(:customer_id => current_user.customer_id).length
+
 	  card = Braintree::PaymentMethod.create(
 		  	:customer_id => customer.id,
 		  	:payment_method_nonce => params[:payment_method_nonce] )
@@ -38,18 +40,28 @@ class CardsController < ApplicationController
 	  		:annual_fee   => params[:annual_fee],
 	  		:credit_limit => params[:credit_limit],
 	  		:note => params[:note])
-	  	if @new_card.save
-				sub = Braintree::Subscription.create(
-					:payment_method_token => card.payment_method.token,
-					:plan_id              => 'churner-standard'
-				)
-				if sub.success?
+	  	if num_cards >= 2
+		  	if @new_card.save
+					sub = Braintree::Subscription.create(
+						:payment_method_token => card.payment_method.token,
+						:plan_id              => 'churner-standard'
+					)
+					if sub.success?
+						redirect_to cards_path
+					else
+						sub.errors.each do |error|
+			  			flash[:error] = error.message
+						end
+					redirect_to cards_path
+					end
+				else
+					redirect_to new_card_path
+				end
+			elsif num_cards < 2
+				if @new_card.save
 					redirect_to cards_path
 				else
-					sub.errors.each do |error|
-		  			flash[:error] = error.message
-					end
-				redirect_to cards_path
+					redirect_to new_card_path
 				end
 			else
 				redirect_to new_card_path
