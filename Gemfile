@@ -15,6 +15,7 @@ gem 'braintree'
 gem 'sucker_punch'
 gem 'figaro'
 gem 'puma'
+gem 'mandrill_mailer'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

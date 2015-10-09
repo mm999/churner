@@ -44,6 +44,13 @@ Rails.application.configure do
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
 
+  # MandrillMailer Config
+  MandrillMailer.configure do |config|
+    config.api_key = Figaro.env.email_provider_apikey
+  end
+
+  config.mandrill_mailer.default_url_options = { :host => Figaro.env.domain_name }
+
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
