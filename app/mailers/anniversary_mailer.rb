@@ -9,21 +9,7 @@ class ChurnerMailer < MandrillMailer::TemplateMailer
         'annualFee' => annualFee,
         'anniversaryDate' => anniversaryDate
       },
-      recipient_vars: {
-        email => {
-          'cardName' => cardName,
-          'annualFee' => annualFee,
-          'anniversaryDate' => anniversaryDate
-        }
-      },
-      merge_vars: {
-        'cardName' => cardName,
-        'annualFee' => annualFee,
-        'anniversaryDate' => anniversaryDate
-      },
-      async: true,
-      inline_css: true,
-      merge_language: handlebars
+      async: true
      )
   end
 end
