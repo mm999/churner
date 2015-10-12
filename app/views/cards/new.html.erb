@@ -1,5 +1,6 @@
-<% content_for :head do %>
+<% content_for :scripts do %>
   <%= render 'new_javascript' %>
+  <%= render 'card_dropdown_jquery' %>
 <% end %>
 
 <div class='container'>
@@ -7,7 +8,7 @@
     <%= form_tag({:action => 'create'}, {:id => 'card-form'}) do %>
       <h4>Add A Card</h4>
       <div class="input-field">
-        <%= text_field_tag :name, nil, name: 'name', :required => true%>
+        <%= text_field_tag :name, nil, name: 'name', :required => true, :id => 'cards'%>
         <%= label_tag :name, 'Card Name' %>
       </div>
       <div class="input-field">
@@ -63,7 +64,7 @@
     <div class="modal-content">
       <h4>Subscription Help</h4>
       <p>
-        Each card you add after the first two cards will be charged $1 every six months. This small charge prevents any unused cards from being closed, keeps all of your points and miles from expiring, and supports the continued development of Churner. Set up auto pay on any unused card you add to Churner in order to avoid unknown interest charges. If you believe this charge is too costly or could be implemented better, please email me at <%= mail_to "contact@churner.io" %> and I will take note. Thanks so much.
+        Your first two cards are free, payment data is collected for an optional subscription but is not used. Each card you add after the first two cards will be charged $1 every six months. This small charge prevents any unused cards from being closed, keeps all of your points and miles from expiring, and supports the continued development of Churner. Set up auto pay on any unused card you add to Churner in order to avoid unknown interest charges. If you believe this charge is too costly or could be implemented better, please email me at <%= mail_to "contact@churner.io" %> and I will take note. Thanks so much.
       </p>
     </div>
     <div class="modal-footer">
@@ -71,6 +72,4 @@
       <a href="#!" class="modal-action modal-close waves-effect waves-green green-text text-accent-4 btn-flat ">Sounds Good!</a>
     </div>
   </div>
-
-
 </div>

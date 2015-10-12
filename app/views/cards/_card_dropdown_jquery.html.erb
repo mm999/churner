@@ -1,0 +1,10 @@
+  <script>
+  $(function() {
+    var availableTags = [
+      <%= render 'card_list' %>
+    ];
+    $( "#cards" ).autocomplete({
+      source: availableTags
+    });
+  });
+</script>

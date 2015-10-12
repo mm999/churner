@@ -1,5 +1,6 @@
-<% content_for :head do %>
+<% content_for :scripts do %>
   <%= render 'edit_javascript' %>
+  <%= render 'card_dropdown_jquery' %>
 <% end %>
 
 <div class='container'>
@@ -7,7 +8,7 @@
     <%= form_tag({:controller => 'cards', :action => 'update'}, {:onsubmit => "return btInit()", :method => "patch", :id => 'card-details-form'}) do %>
       <h4>Edit Your Card Data</h4>
       <div class="input-field">
-      <%= text_field_tag :name, nil, name: 'name', placeholder: @card.name %>
+      <%= text_field_tag :name, nil, name: 'name', placeholder: @card.name, :id => 'cards' %>
       <%= label_tag :name, 'Card Name' %>
       </div>
       <div class="input-field">

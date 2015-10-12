@@ -22,6 +22,9 @@
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
-  <%= javascript_include_tag 'application' %>
   </body>
+  <scripts>
+    <%= javascript_include_tag 'application' %>
+    <%= yield(:scripts) %>
+  </scripts>
 </html>
