@@ -12,7 +12,7 @@
       <%= label_tag :name, 'Card Name' %>
       </div>
       <div class="input-field">
-      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => @card.issue_date.strftime("%b %e, %Y"), :class => "datepicker", :id => "datepicker" %>
+      <%= date_field :issue_date, nil, name: 'issue_date', :placeholder => @card.issue_date.present? ? @card.issue_date.strftime("%b %e, %Y") : "", :class => "datepicker", :id => "datepicker" %>
       <%= label_tag :issue_date, 'Card Issue Date' %>
       </div>
       <div class="input-field">
