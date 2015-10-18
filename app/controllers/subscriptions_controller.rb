@@ -1,11 +1,3 @@
-# This controller is not used anymore because I switched from
-# optional subscription to a mandatory subscription whenver a
-# user adds a card. The logic in subscribe was coppied into the
-# create section of cards_controller and the unsubscribe is not
-# needed because deleting a card automatically unsubscribes it
-# from any subscription it is attached to. I will leave this
-# code here for potential future use.
-
 class SubscriptionsController < ApplicationController
 	before_action :authenticate_user!
 
