@@ -11,6 +11,28 @@ class CardsController < ApplicationController
 		if Card.find(params[:id]).customer_id == current_user.customer_id
 			@card = Card.find(params[:id])
 			@bt_card = Braintree::PaymentMethod.find(@card.card_token)
+
+			# Check if current card has an active subscription
+			@active_sub = false
+			if @bt_card.subscriptions.last && @bt_card.subscriptions.last.status != 'Canceled'
+				@active_sub = true
+			end
+
+			# Count the number of active subscriptions
+			cards = Braintree::Customer.find(current_user.customer_id).credit_cards
+			subscriptions = 0
+			cards.each do |card|
+				if card.subscriptions.last && card.subscriptions.last.status != 'Canceled'
+					subscriptions += 1
+				end
+			end
+
+			# User can have max two unsubscribed cards at once
+			@can_unsub = false
+			if cards.length - subscriptions < 2 && @active_sub
+				@can_unsub = true
+			end
+
 		else
 			flash[:error] = "Card does not exist"
 			redirect_to cards_path

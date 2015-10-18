@@ -38,8 +38,31 @@
         </tbody>
       </table>
       <div class="notes">
-      <h6>Notes:</h6>
-      <p><%= @card.note %></p>
+        <h6>Notes:</h6>
+        <p><%= @card.note %></p>
+      </div>
+      <div class="subscription-field">
+        <h6>Subscription</h6>
+        <% if @can_unsub %>
+          <%= form_tag({:controller => 'subscriptions', :action => 'unsubscribe'}, {:id => 'subscribe-card-form'}) do %>
+            <%= hidden_field_tag 'card_token', @bt_card.token %>
+            <%= hidden_field_tag 'customer_id', @bt_card.customer_id %>
+            <%= hidden_field_tag 'card_id', @card.id %>
+            <%= hidden_field_tag 'subscription_id', @bt_card.subscriptions.last.id %>
+            <button class="btn waves-effect waves-light" type="submit">Unsubscribe</button>
+          <% end %>
+        <% elsif !@active_sub %>
+          <%= form_tag({:controller => 'subscriptions', :action => 'subscribe'}, {:id => 'subscribe-card-form'}) do %>
+            <%= hidden_field_tag 'card_token', @bt_card.token %>
+            <%= hidden_field_tag 'customer_id', @bt_card.customer_id %>
+            <%= hidden_field_tag 'card_id', @card.id %>
+            <button class="btn waves-effect waves-light" type="submit">Subscribe</button>
+          <% end %>
+        <% else %>
+          <p>You can have a maximum of two unsubscribed cards. If you want to
+             unsubscribe this card you must first subscribe with one of 
+             your other two currently ubsubscribed cards.</p>
+        <% end %>
       </div>
     </div>
     <div class='card-action'>

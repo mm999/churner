@@ -18,24 +18,38 @@ class SubscriptionsController < ApplicationController
 			:plan_id => 'churner-standard'
 		)
 		if sub.success?
-			redirect_to cards_path
+			redirect_to card_path(:id => params[:card_id])
 		else
 			sub.errors.each do |error|
   			flash[:error] = error.message
 			end
-		redirect_to cards_path
+			redirect_to card_path(:id => params[:card_id])
 		end
 	end
 
 	def unsubscribe
-		sub = Braintree::Subscription.cancel(params[:subscription_id])
-		if sub.success?
-			redirect_to cards_path
-		else
-			sub.errors.each do |error|
-  			flash[:error] = error.message
+		# Count the number of active subscriptions
+		cards = Braintree::Customer.find(current_user.customer_id).credit_cards
+		subscriptions = 0
+		cards.each do |card|
+			if card.subscriptions.last && card.subscriptions.last.status != 'Canceled'
+				subscriptions += 1
 			end
-			redirect_to cards_path
+		end
+
+		if cards.length - subscriptions < 2
+			sub = Braintree::Subscription.cancel(params[:subscription_id])
+			if sub.success?
+				redirect_to card_path(:id => params[:card_id])
+			else
+				sub.errors.each do |error|
+	  			flash[:error] = error.message
+				end
+				redirect_to card_path(:id => params[:card_id])
+			end
+		else
+			flash[:error] = "Sorry, you can only have a maximum of two unsubscribed cards."
+			redirect_to card_path(:id => params[:card_id])
 		end
 	end
 
